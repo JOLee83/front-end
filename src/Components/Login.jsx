@@ -12,7 +12,7 @@ class Login extends Component {
           <input type="password" />
           <h4>Password<div className="spacer" /> <a>Forgot?</a></h4>
         </form>
-        <Link to="/home"><button>Login</button></Link>
+        <Link to="/app"><button>Login</button></Link>
       </div>
     </>
     );

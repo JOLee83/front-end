@@ -24,11 +24,11 @@ class AppHeader extends Component {
       <>
         <header className="app-header"><div>Quick Count</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
         <nav className={this.state.actionsMenu}>
-          <Link to="/home" onClick={this._toggleMenu}>Home</Link>
+          <Link to="/app" onClick={this._toggleMenu}>Home</Link>
           <Link to="/orders" onClick={this._toggleMenu}>Orders</Link>
-          <Link to="/home" onClick={this._toggleMenu}>Inventory</Link>
-          <Link to="/home" onClick={this._toggleMenu}>Reports</Link>
-          <Link to="/home" onClick={this._toggleMenu}>Settings</Link>
+          <Link to="/inventory" onClick={this._toggleMenu}>Inventory</Link>
+          <Link to="/app" onClick={this._toggleMenu}>Reports</Link>
+          <Link to="/app" onClick={this._toggleMenu}>Settings</Link>
           <Link exact to="/login">Logout</Link>
         </nav>
       </>

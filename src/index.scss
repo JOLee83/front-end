@@ -200,6 +200,22 @@ button:active {
 
 }
 }
+.input-order {
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    .num {
+      max-width: 100px;
+    }
+    h4 {
+      margin:.1em 0;
+      font-size: .8em;
+    }
+    input{
+      margin-right: .5em;
+    }
+  }
+}
 @media (min-width: 800px) {
   .landing-title, .app-header {
     font-size: 2rem;
