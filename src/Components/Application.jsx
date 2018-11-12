@@ -6,6 +6,11 @@ import AppHome from './AppComponents/AppHome.jsx'
 import Orders from './AppComponents/Orders.jsx'
 import InputOrder from './AppComponents/InputOrder.jsx'
 import Inventory from './AppComponents/Inventory.jsx'
+import Count from './AppComponents/Count.jsx'
+import Settings from './AppComponents/Settings.jsx'
+import Reports from './AppComponents/Reports.jsx'
+import Details from './AppComponents/Details.jsx'
+
 
 class Application extends Component {
   state = {}
@@ -19,6 +24,11 @@ class Application extends Component {
             <Route path="/app/orders" component={Orders} />
             <Route path="/app/inputorder" component={InputOrder} />
             <Route path="/app/inventory" component={Inventory} />
+            <Route path="/app/count" component={Count} />
+            <Route path="/app/reports" component={Reports} />
+            <Route path="/app/details" component={Details} />
+
+            <Route path="/app/settings" component={Settings} />
           </Switch>
         </>
       </Router>

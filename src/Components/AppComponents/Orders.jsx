@@ -14,6 +14,7 @@ class Orders extends Component {
               <tr>
                 <th colSpan="3">Orders</th>
               </tr>
+
               <tr>
                 <th>Vendor</th>
                 <th>Amount($)</th>
@@ -21,12 +22,16 @@ class Orders extends Component {
               </tr>
             </thead>
             <tbody>
+
               <tr className="odd">
-                <td>Vendor A</td>
+
+                <td><Link to="/app/inputorder">Vendor A</Link></td>
                 <td>$500.50</td>
                 <td>12/17/18</td>
 
+
               </tr>
+
               <tr className="even">
                 <td>Venodr B</td>
                 <td>$20.33</td>

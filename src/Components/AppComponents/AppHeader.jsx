@@ -27,9 +27,9 @@ class AppHeader extends Component {
           <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-home" /> Home</Link>
           <Link to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</Link>
           <Link to="/app/inventory" onClick={this._toggleMenu}><i className="fas fa-clipboard-list" /> Inventory</Link>
-          <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-file-alt" /> Reports</Link>
-          <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
-          <Link exact to="/login"><i className="fas fa-sign-out-alt" /> Logout</Link>
+          <Link exact to="/app/reports" onClick={this._toggleMenu}><i className="fas fa-file-alt" /> Reports</Link>
+          <Link exact to="/app/settings" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
+          <Link exact to="/"><i className="fas fa-sign-out-alt" /> Logout</Link>
         </nav>
       </>
     );

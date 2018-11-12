@@ -1,32 +1,36 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+
+
 class Inventory extends Component {
 
   render() {
     return (
-      <div className="inventory-div">
+      <>
+        <div className="button-div">
+          <Link to="/app/count"><button>New Count</button></Link>
+        </div>
         <table>
           <thead>
             <tr>
-              <th>Item</th>
-              <th>Count</th>
+              <th>Inventory Dates</th>
             </tr>
           </thead>
           <tbody>
             <tr className="odd">
-              <td>Item 1</td>
-              <td><input type="number" /></td>
+              <td><Link to="/app/count">12/31/2018</Link>
+              </td>
             </tr>
             <tr className="even">
-              <td>Item 2</td>
-              <td><input type="number" /></td>
+              <td><Link to="/app/count">11/30/2018</Link>
+              </td>
+            </tr><tr className="odd">
+              <td><Link to="/app/count">10/31/2018</Link>
+              </td>
             </tr>
           </tbody>
         </table>
-        <form>
-          <input type="date" />
-          <button>Submit</button>
-        </form>
-      </div>
+      </>
     );
   }
 }
