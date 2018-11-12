@@ -1,0 +1,223 @@
+$white: #FBF5F3;
+$black: #403F4C;
+$blacker: #393E41;
+$silver: #BFC0C0;
+$red: #BD1E1E;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Saira', sans-serif;
+  background-color: $white;
+}
+.landing-title {
+  background-color:$red;
+  font-size: 30px;
+  padding: .1em 0 .1em .5em;
+  color: $white;
+
+}
+.welcome-div {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: $black;
+  margin: 0;
+  padding: 1em;
+  h1 {
+    font-size: 1.5em;
+    margin: .5em 0;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+
+  }
+  p {
+    line-height: 2em;
+    max-width: 600px;
+    // width:80%;
+    border: 1px solid $black;
+    padding: .5em;
+    border-radius: 5px;
+    background-color:$red;
+    color: $white;
+    margin: 1em 0;
+  }
+  button {
+    min-width: 150px;
+    padding: .1em;
+    margin: 1em;
+    border-radius: 5px;
+    font-family: 'Saira', sans-serif;
+    color: $blacker;
+    font-size: 1.2em;
+    background-image: linear-gradient(to top right, $silver, $white)
+  }
+  button:active {
+    background-image: linear-gradient(to top right, $white, $silver)
+  }
+}
+.login-div {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $black;
+  margin: 0;
+  form {
+    max-width: 400px;
+    width:80%;
+    border: 1px solid $black;
+    padding: .5em;
+    border-radius: 5px;
+    background-color:$red;
+    color: $white;
+
+    input {
+      width: 95%;
+      padding: .2em .2em 0 .2em;
+      border-radius: 5px;
+      font-size: 1.2em;
+    }
+    h4 {
+      margin:.1em 0;
+      font-size: .8em;
+      display: flex;
+      .spacer{
+        flex: .95;
+      }
+    }
+    
+  }
+  button {
+    min-width: 150px;
+    padding: .1em;
+    margin: 1em;
+    border-radius: 5px;
+    font-family: 'Saira', sans-serif;
+    color: $blacker;
+    font-size: 1.2em;
+    background-image: linear-gradient(to top right, $silver, $white)
+  }
+  button:active {
+    background-image: linear-gradient(to top right, $white, $silver)
+
+  }
+}
+.app-header {
+  background-color:$red;
+  font-size: 30px;
+  padding: .1em .3em .1em .5em;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+.hidden, .shown {
+  display:flex;
+  flex-direction: column;
+  // align-content: center;
+  position: fixed;
+  transition: right .5s ease-in-out;
+  width: 50%;
+  max-width: 250px;
+  z-index: 80;
+  margin: 0 5%;
+  a{
+    border-radius: 5px;
+    border: 1px solid $white;
+    // text-align: center;
+    color: $white;
+    background-color: $red;
+    padding: .5em;
+    font-size: 1.5em;
+    text-decoration: none;
+
+  }
+  
+}
+.hidden {
+  right: -100%;
+  // transition: top .4s ease-in-out;
+
+}
+.shown {
+  // transition: top .4s ease-in-out;
+right: -10%
+  // top: 10%;
+}
+.full-menu {
+  display:none;
+}
+.home, .orders {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: .5em;
+}
+.home-table, .orders-table {
+  max-width: 400px;
+  border-radius: 10px;
+  border: 1px solid $blacker;
+  overflow: hidden;
+  background-color: $red;
+  color: $black;
+  width: 90%;
+  td {
+    height: 40px;
+    padding-left:1em;
+  }
+  th {
+    height: 30px;
+    color: $white;
+  }
+}
+.even {
+  background-color: $silver;
+}
+.odd {
+  background-color: $white;
+
+}
+.button-div {
+  display: flex;
+  justify-content: center;
+
+button {
+margin-top: .5em;
+ 
+  border-radius: 5px;
+  font-family: 'Saira', sans-serif;
+  color: $blacker;
+  font-size: 1em;
+  background-image: linear-gradient(to top right, $silver, $white)
+}
+button:active {
+  background-image: linear-gradient(to top right, $white, $silver)
+
+}
+}
+@media (min-width: 800px) {
+  .landing-title, .app-header {
+    font-size: 2rem;
+  }
+  .welcome-div {
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.5em;
+
+    }
+  }
+  .mobile-menu {
+    display: none;
+  }
+  .full-menu {
+    display: block;
+  }
+}
+
