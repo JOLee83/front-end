@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Login from './Components/Login.jsx'
 import Welcome from './Components/Welcome.jsx'
 import Application from './Components/Application.jsx'

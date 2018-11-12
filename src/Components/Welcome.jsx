@@ -6,7 +6,7 @@ class Welcome extends Component {
     return (
 
       <>
-        <header className="landing-title">Quick Count</header>
+        <header className="landing-title">Quicklee Count</header>
         <div className="welcome-div">
           <h1>Welcome to Quick Count</h1>
           <p>Inventory Solutions for Small Businesses. Quick Count is an easy to use web app, so you can track your received orders and inventory the way you want to from your phone, tablet, or computer.</p>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 
 class AppHeader extends Component {
@@ -22,14 +22,14 @@ class AppHeader extends Component {
   render() {
     return (
       <>
-        <header className="app-header"><div>Quick Count</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
+        <header className="app-header"><div>Quicklee Count</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
         <nav className={this.state.actionsMenu}>
-          <Link to="/app" onClick={this._toggleMenu}>Home</Link>
-          <Link to="/orders" onClick={this._toggleMenu}>Orders</Link>
-          <Link to="/inventory" onClick={this._toggleMenu}>Inventory</Link>
-          <Link to="/app" onClick={this._toggleMenu}>Reports</Link>
-          <Link to="/app" onClick={this._toggleMenu}>Settings</Link>
-          <Link exact to="/login">Logout</Link>
+          <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-home" /> Home</Link>
+          <Link to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</Link>
+          <Link to="/app/inventory" onClick={this._toggleMenu}><i className="fas fa-clipboard-list" /> Inventory</Link>
+          <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-file-alt" /> Reports</Link>
+          <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
+          <Link exact to="/login"><i className="fas fa-sign-out-alt" /> Logout</Link>
         </nav>
       </>
     );

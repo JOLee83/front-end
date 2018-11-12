@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 class Orders extends Component {
   render() {
     return (
       <>
         <div className="button-div">
-          <Link to="/inputorder"><button>New Order</button></Link>
+          <Link to="/app/inputorder"><button>New Order</button></Link>
         </div>
         <div className="orders">
           <table className="orders-table">
