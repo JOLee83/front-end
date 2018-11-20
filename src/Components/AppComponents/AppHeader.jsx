@@ -22,14 +22,14 @@ class AppHeader extends Component {
   render() {
     return (
       <>
-        <header className="app-header"><div>Quicklee Count</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
+        <header className="app-header"><div>Quicklee</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
         <nav className={this.state.actionsMenu}>
           <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-home" /> Home</Link>
-          <Link to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</Link>
+          {/* <Link to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</Link> */}
           <Link to="/app/inventory" onClick={this._toggleMenu}><i className="fas fa-clipboard-list" /> Inventory</Link>
-          <Link exact to="/app/reports" onClick={this._toggleMenu}><i className="fas fa-file-alt" /> Reports</Link>
-          <Link exact to="/app/settings" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
-          <Link exact to="/"><i className="fas fa-sign-out-alt" /> Logout</Link>
+          <Link to="/app/reports" onClick={this._toggleMenu}><i className="fas fa-file-alt" /> Reports</Link>
+          <Link to="/app/settings" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
+          <Link to="/"><i className="fas fa-sign-out-alt" /> Logout</Link>
         </nav>
       </>
     );

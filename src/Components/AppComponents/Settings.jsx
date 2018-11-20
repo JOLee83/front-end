@@ -12,15 +12,7 @@ class Settings extends Component {
           <h4>E-mail</h4>
           <button>Update</button>
         </form>
-        <form>
-          <input type="password" />
-          <h4>Current Password</h4>
-          <input type="password" />
-          <h4>New Password</h4>
-          <input type="password" />
-          <h4>Confirm Password</h4>
-          <button>Update</button>
-        </form>
+
       </>
     );
   }

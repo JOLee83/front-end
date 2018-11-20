@@ -115,8 +115,11 @@ body {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  // position: fixed;
+  // width: calc(100% - .71em);
 }
 .hidden, .shown {
+  top: 3.4em;
   display:flex;
   flex-direction: column;
   // align-content: center;
@@ -215,6 +218,9 @@ button:active {
       margin-right: .5em;
     }
   }
+}
+.count-div table input {
+  width: 100px;
 }
 @media (min-width: 800px) {
   .landing-title, .app-header {

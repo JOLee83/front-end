@@ -7,12 +7,24 @@ class Details extends Component {
     return (
       <>
         <form>
-          <input type="date" />
-          <h4>Begin Date</h4>
-          <input type="date" />
-          <h4>End Date</h4>
+          <select>
+            <option>Choose Beginning</option>
+            <option>Inventory Date 1</option>
+            <option>Inventory Date 2</option>
+            <option>Inventory Date 3</option>
+          </select>
+          <h4>Beginning Inventory</h4>
+          <select>
+            <option>Choose Ending</option>
+            <option>Inventory Date 1</option>
+            <option>Inventory Date 2</option>
+            <option>Inventory Date 3</option>
+          </select>
+          <h4>Ending Inventory</h4>
           <input type="number" />
           <h4>Sales($)</h4>
+          <input type="date" />
+          <h4>Report Date</h4>
           <div className="button-div">
             <button>Generate Report</button>
           </div>
