@@ -1,54 +1,32 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+
 class Count extends Component {
   state = {
+    confirmSubmit: false,
     newItemName: "",
     newItemPrice: null,
     items: [],
-    inventoryDetails: []
+    total: 0,
+    date: null
   }
   componentDidMount() {
-
-    if (this.props.match.params.inventoriesId) {
-      console.log("if")
-      axios.get("https://localhost:5001/api/items")
-        .then(json => {
-          this.setState({
-            items: json.data
-          })
+    axios.get("https://localhost:5001/api/items")
+      .then(json => {
+        this.setState({
+          items: json.data
         })
-      axios.get(`https://localhost:5001/api/inventorydetails/${this.props.match.params.inventoriesId}`)
-        .then(json => {
-          console.log(json.data)
-          this.setState({
-            inventoryDetails: json.data
-          })
-
-        })
-      console.log(this.state.inventoryDetails)
-    } else {
-      console.log("else")
-
-      axios.get("https://localhost:5001/api/items")
-        .then(json => {
-          this.setState({
-            items: json.data
-          })
-          console.log(this.state.items)
-        })
-    }
+      })
   }
   _newItemName = (e) => {
     this.setState({
       newItemName: e.target.value
     })
-    console.log(this.state.newItemName)
   }
   _newItemPrice = (e) => {
     this.setState({
       newItemPrice: e.target.value
     })
-    console.log(this.state.newItemPrice)
   }
   addItem = (e) => {
     axios.post("https://localhost:5001/api/items", { itemName: this.state.newItemName, itemPrice: this.state.newItemPrice })
@@ -68,7 +46,6 @@ class Count extends Component {
   }
   updateItem = (itemId, itemName, itemPrice) => {
     axios.put("https://localhost:5001/api/items/" + itemId, { id: itemId, itemName: itemName, itemPrice: itemPrice })
-
   }
   updateName = (e, itemId) => {
     const index = this.state.items.findIndex(f => f.id === itemId)
@@ -84,12 +61,41 @@ class Count extends Component {
     const items = [...this.state.items]
     item.itemPrice = parseFloat(e.target.value, 10)
     items[index] = item
-    this.setState({ items })
+    this.setState({ items }, () => this.updateTotal())
+  }
+
+  updateTotal = (e, itemPrice) => {
+    const sum = +(itemPrice) * e.target.value
+    this.setState(prevState => ({
+      total: prevState.total + sum
+    }))
+  }
+  updateDate = e => {
+    this.setState({ date: e.target.value })
+  }
+  submitCount = () => {
+    axios.post("https://localhost:5001/api/inventories", { inventoryTotal: this.state.total, inventoryDate: this.state.date })
+      .then(() => {
+        this.props.history.push("/app/inventory")
+      })
+  }
+  confirmSubmit = () => {
+    this.setState(prevState => ({
+      confirmSubmit: !prevState.confirmSubmit
+    }))
   }
   render() {
     return (
-
       <div className="count-div">
+        <div class={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
+          <div class="confirm-box">
+            <p>Are You Sure?</p>
+            <div>
+              <button onClick={this.submitCount}>Yes</button>
+              <button onClick={() => this.confirmSubmit()}>No</button>
+            </div>
+          </div>
+        </div>
         <form>
           <div>
             <input onChange={this._newItemName} />
@@ -124,11 +130,7 @@ class Count extends Component {
                     </td>
                     <td>
                       <input
-                        // value={this.state.inventoryDetails.map(detail => {
-                        //   if(detail.id === item.id){
-                        //     return detail.itemsO
-                        //   }
-                        // })}
+                        onChange={(e) => this.updateTotal(e, item.itemPrice)}
                         type="number" />
                     </td>
                     <td>
@@ -157,7 +159,10 @@ class Count extends Component {
                       />
                     </td>
                     <td>
-                      <input type="number" />
+                      <input
+                        type="number"
+                        onChange={(e) => this.updateTotal(e, item.itemPrice)}
+                      />
                     </td>
                     <td>
                       <input
@@ -176,19 +181,18 @@ class Count extends Component {
                   </tr>
                 )
               }
-
             })}
-
-
           </tbody>
         </table>
-        <form>
-          <figure></figure>
+        <form onSubmit={() => this.confirmSubmit()}>
+          <figure>${this.state.total.toFixed(2)}</figure>
           <h4>Total</h4>
-          <input type="date" />
+          <input
+            type="date"
+            onChange={(e) => { this.updateDate(e) }} />
           <button>Submit</button>
         </form>
-      </div>
+      </div >
     );
   }
 }

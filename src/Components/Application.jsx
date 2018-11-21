@@ -9,6 +9,8 @@ import Inventory from './AppComponents/Inventory.jsx'
 import Count from './AppComponents/Count.jsx'
 import Settings from './AppComponents/Settings.jsx'
 import Reports from './AppComponents/Reports.jsx'
+import Report from './AppComponents/Report.jsx'
+
 import Details from './AppComponents/Details.jsx'
 
 
@@ -24,10 +26,11 @@ class Application extends Component {
             <Route path="/app/inputorder" component={InputOrder} /> */}
             <Route path="/app/inventory" component={Inventory} />
             <Route exact path="/app/count" component={Count} />
-            <Route path="/app/count/:inventoriesId" component={Count} />
+            {/* <Route path="/app/count/:inventoriesId" component={Count} /> */}
             <Route path="/app/reports" component={Reports} />
-            <Route exact path="/app/details" component={Details} />
-            <Route path="/app/details/:reportsId" component={Details} />
+            <Route path="/app/report/:id" component={Report} />
+            <Route path="/app/details" component={Details} />
+            {/* <Route path="/app/details/:reportsId" component={Details} /> */}
             <Route path="/app/settings" component={Settings} />
           </Switch>
         </>

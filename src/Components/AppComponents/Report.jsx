@@ -1,46 +1,36 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-class AppHome extends Component {
+class Report extends Component {
   state = {
-    reports: [],
-    users: []
+    reports: []
   }
   componentDidMount() {
     axios.get("https://localhost:5001/api/reports")
       .then(json => {
         this.setState({
-          reports: json.data.reverse()
+          reports: json.data
         })
-      })
-    axios.get("https://localhost:5001/api/users")
-      .then(json => {
-        this.setState({
-          users: json.data
-        })
+        console.log(this.props)
+        console.log(this.state.reports)
       })
   }
+
   render() {
     return (
-      <div className="home">
+      <>
         <table className="home-table">
           <thead>
             <tr>
               <th colSpan="2">Last Inventory</th>
             </tr>
             <tr>
-              {this.state.users.map((user, index) => {
-                if (index === 0) {
-                  return (
-                    <th colSpan="2">For {user.companyName} </th>
-                  )
-                }
-              })}
+              <th colSpan="2">For "Company Name"</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.reports.map((report, index) => {
-              if (index === 0) {
+            {this.state.reports.map((report) => {
+              if (String(report.id) === this.props.match.params.id) {
                 return (<>
                   <tr className="odd">
                     <td>Date</td>
@@ -69,11 +59,13 @@ class AppHome extends Component {
                   <tr className="odd">
                     <td>= COGS %</td>
                     <td>{Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%</td>
-                  </tr></>
+                  </tr>
+                </>
                 )
 
               }
             })}
+
           </tbody>
           <tfoot>
             <tr>
@@ -81,9 +73,9 @@ class AppHome extends Component {
             </tr>
           </tfoot>
         </table>
-      </div>
+      </>
     );
   }
 }
 
-export default AppHome;
+export default Report;

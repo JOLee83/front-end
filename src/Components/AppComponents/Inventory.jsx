@@ -17,6 +17,16 @@ class Inventory extends Component {
         console.log(this.state.inventories)
       })
   }
+  deleteInventory = (inventoryId) => {
+    axios.delete("https://localhost:5001/api/inventories/" + inventoryId)
+      .then(json => {
+        this.setState({
+          inventories: this.state.inventories.filter(inventory => inventory.id !== inventoryId)
+        })
+      })
+  }
+
+
   render() {
     return (
       <>
@@ -37,22 +47,25 @@ class Inventory extends Component {
                 return (
                   <tr className="odd">
                     <td>
-                      <Link to={`/app/count/${inventory.id}`}>{new Date(inventory.inventoryDate).toLocaleDateString()}</Link>
+                      {new Date(inventory.inventoryDate).toLocaleDateString()}
                     </td>
                     <td>
-                      <Link to={`/app/count/${inventory.id}`}>{inventory.inventoryTotal}</Link>
+                      {inventory.inventoryTotal}
                     </td>
+                    <td><button onClick={() => this.deleteInventory(inventory.id)}>Delete</button></td>
                   </tr>
                 )
               } else {
                 return (
                   <tr className="even">
                     <td>
-                      <Link to={`/app/count/${inventory.id}`}>{new Date(inventory.inventoryDate).toLocaleDateString()}</Link>
+                      {new Date(inventory.inventoryDate).toLocaleDateString()}
                     </td>
                     <td>
-                      <Link to={`/app/count/${inventory.id}`}>{inventory.inventoryTotal}</Link>
+                      {inventory.inventoryTotal}
                     </td>
+                    <td><button onClick={() => this.deleteInventory(inventory.id)}> Delete</button></td>
+
                   </tr>
                 )
               }

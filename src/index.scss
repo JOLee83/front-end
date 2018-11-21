@@ -9,6 +9,28 @@ body {
   font-family: 'Saira', sans-serif;
   background-color: $white;
 }
+.unconfirm {
+  display: none;
+}
+.confirm {
+  background-color: #BD1E1E50;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .confirm-box{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $white;
+  }
+
+}
 .landing-title {
   background-color:$red;
   font-size: 30px;
