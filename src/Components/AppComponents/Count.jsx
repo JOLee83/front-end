@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 class Count extends Component {
   state = {
@@ -96,17 +97,26 @@ class Count extends Component {
             </div>
           </div>
         </div>
+        <header className="breadcrumbs">
+          <span><Link exact to="/app"><i className="fas fa-home" /> Home</Link></span>
+          <span><Link exact to="/app/inventory"><i className="fas fa-clipboard-list" /> Inventory</Link></span>
+          <span className="active"><i class="fas fa-list-ol" /> Count</span>
+        </header>
         <form>
-          <div>
-            <input onChange={this._newItemName} />
-            <h4>Item Name</h4>
-          </div>
-          <div>
-            <input type="number" step="0.01" onChange={this._newItemPrice} />
-            <h4>Price ($)</h4>
-          </div>
-          <div>
+          <div className="form-div">
+            <h2>New Item</h2>
             <button onClick={this.addItem}>Add to List</button>
+          </div>
+          <div className="form-div">
+            <div>
+
+              <input onChange={this._newItemName} />
+              <h4>Item Name</h4>
+            </div>
+            <div>
+              <input type="number" step="0.01" onChange={this._newItemPrice} />
+              <h4>Cost ($)</h4>
+            </div>
           </div>
         </form>
         <table>
@@ -114,7 +124,9 @@ class Count extends Component {
             <tr>
               <th>Item</th>
               <th>Count</th>
-              <th>Price($)</th>
+              <th>Cost</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -122,18 +134,18 @@ class Count extends Component {
               if (index % 2 === 0) {
                 return (
                   <tr key={index} className="odd">
-                    <td>
+                    <td className="data-one">
                       <input
                         value={item.itemName}
                         onChange={(e) => this.updateName(e, item.id)}
                       />
                     </td>
-                    <td>
+                    <td className="data-two">
                       <input
                         onChange={(e) => this.updateTotal(e, item.itemPrice)}
                         type="number" />
                     </td>
-                    <td>
+                    <td className="data-three">
                       <input
                         type="number"
                         value={item.itemPrice}
@@ -141,30 +153,33 @@ class Count extends Component {
                         onChange={(e) => this.updatePrice(e, item.id)}
                       />
                     </td>
-                    <td>
-                      <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} > Update</button>
+                    <td className="data-four">
+                      <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} >
+                        <i class="far fa-arrow-alt-circle-up" />
+                      </button>
                     </td>
-                    <td>
-                      <button onClick={() => this.deleteItem(item.id)}>Delete</button>
+                    <td className="data-five">
+                      <button onClick={() => this.deleteItem(item.id)}>
+                        <i class="fas fa-trash-alt" />
+                      </button>
                     </td>
                   </tr>
                 )
               } else {
                 return (
                   <tr key={index} className="even">
-                    <td>
+                    <td className="data-one">
                       <input
                         value={item.itemName}
                         onChange={(e) => this.updateName(e, item.id)}
                       />
                     </td>
-                    <td>
+                    <td className="data-two">
                       <input
-                        type="number"
                         onChange={(e) => this.updateTotal(e, item.itemPrice)}
-                      />
+                        type="number" />
                     </td>
-                    <td>
+                    <td className="data-three">
                       <input
                         type="number"
                         value={item.itemPrice}
@@ -172,26 +187,38 @@ class Count extends Component {
                         onChange={(e) => this.updatePrice(e, item.id)}
                       />
                     </td>
-                    <td>
-                      <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)}> Update</button>
+                    <td className="data-four">
+                      <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} >
+                        <i class="far fa-arrow-alt-circle-up" />
+                      </button>
                     </td>
-                    <td>
-                      <button onClick={() => this.deleteItem(item.id)}>Delete</button>
+                    <td className="data-five">
+                      <button onClick={() => this.deleteItem(item.id)}>
+                        <i class="fas fa-trash-alt" />
+                      </button>
                     </td>
                   </tr>
                 )
               }
             })}
           </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2">Total</th>
+              <th colspan="3">${this.state.total.toFixed(2)}</th>
+            </tr>
+            <tr>
+              <th colspan="3">
+                <input
+                  type="date"
+                  onChange={(e) => { this.updateDate(e) }} />
+              </th>
+              <th colspan="2">
+                <button onClick={() => this.confirmSubmit()}>Submit</button>
+              </th>
+            </tr>
+          </tfoot>
         </table>
-        <form onSubmit={() => this.confirmSubmit()}>
-          <figure>${this.state.total.toFixed(2)}</figure>
-          <h4>Total</h4>
-          <input
-            type="date"
-            onChange={(e) => { this.updateDate(e) }} />
-          <button>Submit</button>
-        </form>
       </div >
     );
   }

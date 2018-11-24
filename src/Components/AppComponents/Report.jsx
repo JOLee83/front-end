@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+
 
 class Report extends Component {
   state = {
@@ -18,7 +20,12 @@ class Report extends Component {
 
   render() {
     return (
-      <>
+      <div className="report-div">
+        <header className="breadcrumbs">
+          <span><Link exact to="/app"><i className="fas fa-home" /> Home</Link></span>
+          <span ><Link to="/app/reports"><i className="fas fa-file-alt" /> Reports</Link></span>
+          <span className="active"><i className="fas fa-file-alt" /> Report</span>
+        </header>
         <table className="home-table">
           <thead>
             <tr>
@@ -73,7 +80,7 @@ class Report extends Component {
             </tr>
           </tfoot>
         </table>
-      </>
+      </div>
     );
   }
 }

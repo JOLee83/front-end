@@ -4,7 +4,7 @@ import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
 class Login extends Component {
   render() {
     return (<>
-      <header className="landing-title">Quicklee</header>
+      <header className="landing-title"><i class="fas fa-running" /> Quicklee</header>
       <div className="login-div">
         <form>
           <input />

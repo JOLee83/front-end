@@ -3,12 +3,22 @@ $black: #403F4C;
 $blacker: #393E41;
 $silver: #BFC0C0;
 $red: #BD1E1E;
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Saira', sans-serif;
   background-color: $white;
 }
+.even {
+  background-color: $silver;
+  color: $blacker;
+}
+.odd {
+  background-color: $white;
+  color: $blacker;
+}
+//Confirmation Component
 .unconfirm {
   display: none;
 }
@@ -22,15 +32,30 @@ body {
   align-items: center;
   .confirm-box{
     width: 200px;
-    height: 150px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: $white;
+    border-radius: 5px;
+    box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    button{
+      margin: .5em;
+      width: 5em;
+      height: 2em;
+      border-radius: 5px;
+      background-image: linear-gradient(to top right, $silver, $white);
+      font-family: 'Saira', sans-serif;
+
+    }
+    p {
+      margin: 0;
+    }
   }
 
 }
+//
 .landing-title {
   background-color:$red;
   font-size: 30px;
@@ -53,12 +78,10 @@ body {
     text-align: left;
     width: 100%;
     max-width: 600px;
-
   }
   p {
     line-height: 2em;
     max-width: 600px;
-    // width:80%;
     border: 1px solid $black;
     padding: .5em;
     border-radius: 5px;
@@ -128,7 +151,38 @@ body {
 
   }
 }
+.breadcrumbs {
+  margin-top: 4.5em;
+  display: flex;
+  font-size: .9em;
+  width: 90%;
+  max-width: 400px;
+  border: .1em $red solid;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  color: $white;
+  box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+  span {
+    flex: 1;
+    text-align: center;
+    border: .1em $red solid;
+    background-color: $red;
+  }
+  .active {
+    background-color: $white;
+    color: $red;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+// AppHeader
+.header-div {
+
 .app-header {
+  position: fixed;
+  width: calc(100% - .7em);
   background-color:$red;
   font-size: 30px;
   padding: .1em .3em .1em .5em;
@@ -137,51 +191,46 @@ body {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  // position: fixed;
-  // width: calc(100% - .71em);
 }
 .hidden, .shown {
   top: 3.4em;
   display:flex;
   flex-direction: column;
-  // align-content: center;
   position: fixed;
   transition: right .5s ease-in-out;
   width: 60%;
   max-width: 250px;
   z-index: 80;
-  margin: 0 5%;
   a{
     border-radius: 5px;
     border: 1px solid $white;
-    // text-align: center;
     color: $white;
     background-color: $red;
     padding: .5em;
     font-size: 1.5em;
     text-decoration: none;
-
+    box-shadow: -.1em .1em .1em $black;
   }
-  
 }
 .hidden {
   right: -100%;
-  // transition: top .4s ease-in-out;
-
 }
 .shown {
-  // transition: top .4s ease-in-out;
-right: -10%
-  // top: 10%;
+right: -5%;
 }
 .full-menu {
   display:none;
 }
-.home, .orders {
+}
+// end AppHeader
+.home, .orders {;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: .5em;
+  // padding-top: .5em;
+
 }
 .home-table, .orders-table {
   max-width: 400px;
@@ -189,41 +238,92 @@ right: -10%
   border: 1px solid $blacker;
   overflow: hidden;
   background-color: $red;
-  color: $black;
   width: 90%;
+  box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
   td {
-    height: 40px;
+    font-size: 1em;
+    height: 45px;
     padding-left:1em;
+    width: 50%;
   }
   th {
     height: 30px;
     color: $white;
   }
+  i {
+    font-size: .8em;
+  }
 }
-.even {
-  background-color: $silver;
-}
-.odd {
-  background-color: $white;
-
+.inv-div {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  // padding-top: .5em;
+  .breadcrumbs {
+    margin-bottom: 0;
+  }
+ .button-div{
+   button{
+   margin-bottom: .5em;
+   }
+ }
+  table {
+    max-width: 400px;
+    border-radius: 10px;
+    border: 1px solid $blacker;
+    overflow: hidden;
+    background-color: $red;
+    width: 90%;
+    box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    td {
+      font-size: 1em;
+      height: 45px;
+      padding-left:1em;
+      // width: 33%;
+    }
+    th {
+      height: 30px;
+      color: $white;
+    }
+    .data-one {
+      width: 40%;
+    }
+    .data-two {
+      width: 40%;
+    }
+    .data-three {
+      width: 20%;
+      display: flex;
+      button {
+        font-size: 1.5em;
+        color: $blacker;
+        background-color: transparent;
+        border: none;
+      }
+    }
+    i {
+      font-size: .8em;
+    }
+  }
 }
 .button-div {
   display: flex;
   justify-content: center;
-
-button {
-margin-top: .5em;
- 
-  border-radius: 5px;
-  font-family: 'Saira', sans-serif;
-  color: $blacker;
-  font-size: 1em;
-  background-image: linear-gradient(to top right, $silver, $white)
-}
-button:active {
-  background-image: linear-gradient(to top right, $white, $silver)
-
-}
+  button {
+  margin-top: .5em;
+  
+    border-radius: 5px;
+    font-family: 'Saira', sans-serif;
+    color: $blacker;
+    font-size: 1em;
+    background-image: linear-gradient(to top right, $silver, $white)
+  }
+  button:active {
+    background-image: linear-gradient(to top right, $white, $silver)
+  }
 }
 .input-order {
   form {
@@ -241,9 +341,256 @@ button:active {
     }
   }
 }
-.count-div table input {
-  width: 100px;
+.count-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    width: 95%;
+    max-width: 320px;
+
+    margin: 0 0 1em 0;
+    background-color: $red;
+    border-radius: 10px;
+    border: 1px solid $blacker;
+    box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    .form-div {
+      display: flex;
+      justify-content: center;
+      input {
+        padding: .1em;
+        margin-left: .5em;
+        width: 90%;
+        background-color: $white;
+        border-top: .1em solid $blacker;
+        border-right: .1em solid $silver;
+        border-bottom: .1em solid $silver;
+        border-left: .1em solid $blacker;
+        border-radius: 5px;
+      }
+      h4 {
+        margin: .1em 0 .1em .5em;
+        color: $white;
+      }
+      button{
+        background-color: $red;
+        border-top: .1em solid $silver;
+        border-right: .1em solid $blacker;
+        border-bottom: .1em solid $blacker;
+        border-left: .1em solid $silver;
+        border-radius: 5px;
+        color: $white;
+        width: 40%;
+        font-size: 1.2em;
+        margin: .1em;
+
+
+      }
+      h2 {
+        font-size: 1.2em;
+        margin: 0;
+        text-align: left;
+        width: 55%;
+        color: $white;
+
+      }
+    }
+  }
+  table {
+    margin: 0 .5em;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 1px solid $blacker;
+    overflow: hidden;
+    background-color: $red;
+    box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    
+    td {
+    
+      font-size: 1em;
+      height: 45px;
+    
+    }
+    th {
+      height: 30px;
+      color: $white;
+    }
+    input {
+      
+      background-color: transparent;
+      // border:none;
+      height: 100%;
+      // padding: .5em;
+    }
+    .data-one{
+      width: 100px;
+      input{
+        width: 95%;
+      }
+    }
+    .data-two {
+      width: 20px;
+      input {
+        width: 90%;
+      }
+    }
+    .data-three {
+      width: 50px;
+      input {
+        width: 95%
+      }
+    }
+    .data-four, .data-five {
+      width: 10px;
+    }
+    button {
+      width: 100%;
+      font-size: 1.5em;
+      color: $blacker;
+      background-color: transparent;
+      border: none;
+
+    }
+    tfoot {
+      button{
+        border-top: .1em solid $silver;
+        border-right: .1em solid $blacker;
+        border-bottom: .1em solid $blacker;
+        border-left: .1em solid $silver;
+        border-radius: 0 5px 5px 0;
+        color: $white;
+      }
+      input{
+        width: 100%;
+        text-align: center;
+        background-color: $white;
+        border-top: .1em solid $blacker;
+        border-right: .1em solid $silver;
+        border-bottom: .1em solid $silver;
+        border-left: .1em solid $blacker;
+        border-radius: 5px 0 0 5px;
+      }
+    }
+  }
+
 }
+.reports-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .button-div {
+    button{
+      margin: 0;
+    }
+    margin-bottom: 1em;
+  }
+  table {
+    margin: 0 .5em;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 1px solid $blacker;
+    overflow: hidden;
+    background-color: $red;
+    box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    
+    td {
+      padding: .5em;
+      // align: center;
+      font-size: 1em;
+      // height: 45px;
+      // width: 50%;
+      button {
+        width: 100%;
+        font-size: 1.5em;
+        color: $blacker;
+      background-color: transparent;
+      border: none;
+      }
+      a {
+        color: inherit;
+      }
+    }
+    th {
+      height: 30px;
+      color: $white;
+    }
+  }
+}
+.report-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .button-div{
+    margin: .5em 0 1em 0;
+  }
+  table {
+    margin-bottom: 1em;
+  }
+  form {
+    width: 60%;
+    max-width: 320px;
+
+    // margin: 0 0 1em 0;
+    background-color: $red;
+    border-radius: 10px;
+    border: 1px solid $blacker;
+    box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+
+      input, select {
+        
+        padding: .1em;
+        margin-left: .5em;
+        width: 90%;
+        background-color: $white;
+        border-top: .1em solid $blacker;
+        border-right: .1em solid $silver;
+        border-bottom: .1em solid $silver;
+        border-left: .1em solid $blacker;
+        border-radius: 5px;
+      }
+      h4 {
+        margin: .1em 0 .1em .5em;
+        color: $white;
+      }
+      button{
+        background-color: $red;
+        border-top: .1em solid $silver;
+        border-right: .1em solid $blacker;
+        border-bottom: .1em solid $blacker;
+        border-left: .1em solid $silver;
+        border-radius: 5px;
+        color: $white;
+        width: 40%;
+        font-size: 1.2em;
+        margin: .1em;
+
+
+      }
+      h2 {
+        font-size: 1.2em;
+        margin: 0;
+        text-align: left;
+        width: 55%;
+        color: $white;
+
+      }
+
+    }
+  }
+
+
+
 @media (min-width: 800px) {
   .landing-title, .app-header {
     font-size: 2rem;
@@ -254,14 +601,17 @@ button:active {
     }
     p {
       font-size: 1.5em;
-
     }
   }
+  .header-div{
+
   .mobile-menu {
     display: none;
   }
   .full-menu {
     display: block;
+    margin-left: 5em;
   }
+}
 }
 

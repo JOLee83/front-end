@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+
 
 class Details extends Component {
   state = {
@@ -48,7 +50,12 @@ class Details extends Component {
   }
   render() {
     return (
-      <>
+      <div className="details-div">
+        <header className="breadcrumbs">
+          <span><Link exact to="/app"><i className="fas fa-home" /> Home</Link></span>
+          <span ><Link to="/app/reports"><i className="fas fa-file-alt" /> Reports</Link></span>
+          <span className="active"><i className="fas fa-file-alt" /> Report</span>
+        </header>
         <div class={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
           <div class="confirm-box">
             <p>Are You Sure?</p>
@@ -59,34 +66,49 @@ class Details extends Component {
           </div>
         </div>
         <form>
-          <select onChange={(e) => this.updateBegin(e)}>
-            <option value={0}>Choose Beginning</option>
-            {this.state.inventories.map((inventory, index) => {
-              return (
-                <option key={index} value={inventory.inventoryTotal}>{new Date(inventory.inventoryDate).toLocaleDateString()}</option>
-              )
-            })}
-          </select >
-          <h4>Beginning Inventory</h4>
-          <select onChange={(e) => this.updateEnd(e)}>
-            <option value={0}>Choose Ending</option>
-            {this.state.inventories.map((inventory, index) => {
-              return (
-                <option key={index} value={inventory.inventoryTotal}>{new Date(inventory.inventoryDate).toLocaleDateString()}</option>
-              )
-            })}
-          </select>
-          <h4>Ending Inventory</h4>
-          <input type="number" onChange={(e) => this.updatePurchases(e)} />
-          <h4 >Purchases($)</h4>
-          <input type="number" onChange={(e) => this.updateSales(e)} />
-          <h4>Sales($)</h4>
-          <input onChange={(e) => { this.updateDate(e) }} type="date" />
-          <h4>Report Date</h4>
-          <div className="button-div">
-            <button onClick={() => { this.confirmSubmit() }}>Submit Report</button>
+          <div>
+            <select onChange={(e) => this.updateBegin(e)}>
+              <option value={0}>Choose Beginning</option>
+              {this.state.inventories.map((inventory, index) => {
+                return (
+                  <option key={index} value={inventory.inventoryTotal}>{new Date(inventory.inventoryDate).toLocaleDateString()}</option>
+                )
+              })}
+            </select >
+            <h4>Beginning Inventory</h4>
           </div>
+          <div>
+
+            <select onChange={(e) => this.updateEnd(e)}>
+              <option value={0}>Choose Ending</option>
+              {this.state.inventories.map((inventory, index) => {
+                return (
+                  <option key={index} value={inventory.inventoryTotal}>{new Date(inventory.inventoryDate).toLocaleDateString()}</option>
+                )
+              })}
+            </select>
+            <h4>Ending Inventory</h4>
+          </div>
+          <div>
+
+            <input type="number" onChange={(e) => this.updatePurchases(e)} />
+            <h4 >Purchases($)</h4>
+          </div>
+          <div className="from-div">
+
+            <input type="number" onChange={(e) => this.updateSales(e)} />
+            <h4>Sales($)</h4>
+          </div>
+          <div>
+
+            <input onChange={(e) => { this.updateDate(e) }} type="date" />
+            <h4>Report Date</h4>
+          </div>
+
         </form>
+        <div className="button-div">
+          <button onClick={() => { this.confirmSubmit() }}>Submit Report</button>
+        </div>
         <table className="home-table">
           <thead>
             <tr>
@@ -132,7 +154,7 @@ class Details extends Component {
             </tr>
           </tfoot>
         </table>
-      </>
+      </div>
     );
   }
 }

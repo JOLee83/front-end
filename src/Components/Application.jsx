@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import axios from 'axios'
 
 import AppHeader from './AppComponents/AppHeader.jsx'
 import AppHome from './AppComponents/AppHome.jsx'
@@ -15,6 +16,29 @@ import Details from './AppComponents/Details.jsx'
 
 
 class Application extends Component {
+  state = {
+    users: [],
+
+
+  }
+  componentDidMount() {
+    axios.get("https://localhost:5001/api/users")
+      .then(json => {
+        this.setState({
+          users: json.data
+        })
+      })
+      .then(this.state.users.map((user, index) => {
+        if (index === 0) {
+          this.setState({
+            name: user.companyName
+          })
+        }
+      })).then(console.log(this.state))
+
+  }
+
+
   render() {
     return (
       <Router>

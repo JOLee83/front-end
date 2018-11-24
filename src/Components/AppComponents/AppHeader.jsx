@@ -21,8 +21,8 @@ class AppHeader extends Component {
   }
   render() {
     return (
-      <>
-        <header className="app-header"><div>Quicklee</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
+      <div className="header-div">
+        <header className="app-header"><div><i class="fas fa-running" /> Quicklee</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
         <nav className={this.state.actionsMenu}>
           <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-home" /> Home</Link>
           {/* <Link to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</Link> */}
@@ -31,7 +31,7 @@ class AppHeader extends Component {
           <Link to="/app/settings" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
           <Link to="/"><i className="fas fa-sign-out-alt" /> Logout</Link>
         </nav>
-      </>
+      </div>
     );
   }
 }
