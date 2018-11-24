@@ -10,6 +10,10 @@ body {
   font-family: 'Saira', sans-serif;
   background-color: $white;
 }
+input {
+  font-family: 'Saira', sans-serif;
+
+}
 .even {
   background-color: $silver;
   color: $blacker;
@@ -23,7 +27,8 @@ body {
   display: none;
 }
 .confirm {
-  background-color: #BD1E1E50;
+  z-index: 100;
+  background-color: #FBF5F375;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -223,13 +228,12 @@ right: -5%;
 }
 }
 // end AppHeader
-.home, .orders {;
+.home, .orders {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  // padding-top: .5em;
 
 }
 .home-table, .orders-table {
@@ -267,7 +271,7 @@ right: -5%;
   }
  .button-div{
    button{
-   margin-bottom: .5em;
+   margin: 1em 0 1em 0;
    }
  }
   table {
@@ -319,10 +323,10 @@ right: -5%;
     font-family: 'Saira', sans-serif;
     color: $blacker;
     font-size: 1em;
-    background-image: linear-gradient(to top right, $silver, $white)
+    background-image: linear-gradient(to top right, $silver, $white);
   }
   button:active {
-    background-image: linear-gradient(to top right, $white, $silver)
+    background-image: linear-gradient(to top right, $white, $silver);
   }
 }
 .input-order {
@@ -347,7 +351,7 @@ right: -5%;
   align-items: center;
   form {
     width: 95%;
-    max-width: 320px;
+    max-width: 400px;
 
     margin: 0 0 1em 0;
     background-color: $red;
@@ -356,7 +360,7 @@ right: -5%;
     box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
     .form-div {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       input {
         padding: .1em;
         margin-left: .5em;
@@ -373,26 +377,24 @@ right: -5%;
         color: $white;
       }
       button{
-        background-color: $red;
+        background-image: linear-gradient(to top right, $silver, $white);
         border-top: .1em solid $silver;
         border-right: .1em solid $blacker;
         border-bottom: .1em solid $blacker;
         border-left: .1em solid $silver;
         border-radius: 5px;
-        color: $white;
-        width: 40%;
+        color: $blacker;
+        width: 20%;
         font-size: 1.2em;
-        margin: .1em;
-
-
+        margin: .1em .2em;
       }
       h2 {
+        padding-left: .5em;
         font-size: 1.2em;
         margin: 0;
         text-align: left;
         width: 55%;
         color: $white;
-
       }
     }
   }
@@ -423,25 +425,25 @@ right: -5%;
       // padding: .5em;
     }
     .data-one{
-      width: 100px;
+      max-width: 30VW;
       input{
         width: 95%;
       }
     }
     .data-two {
-      width: 20px;
+      max-width: 10vw;
       input {
         width: 90%;
       }
     }
     .data-three {
-      width: 50px;
+      max-width: 20vw;
       input {
         width: 95%
       }
     }
     .data-four, .data-five {
-      width: 10px;
+      max-width: 10vw;
     }
     button {
       width: 100%;
@@ -453,12 +455,14 @@ right: -5%;
     }
     tfoot {
       button{
+        background-image: linear-gradient(to top right, $silver, $white);
+        color: $blacker;
+
         border-top: .1em solid $silver;
         border-right: .1em solid $blacker;
         border-bottom: .1em solid $blacker;
         border-left: .1em solid $silver;
         border-radius: 0 5px 5px 0;
-        color: $white;
       }
       input{
         width: 100%;
@@ -478,6 +482,7 @@ right: -5%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
   .button-div {
     button{
       margin: 0;
@@ -496,16 +501,13 @@ right: -5%;
     
     td {
       padding: .5em;
-      // align: center;
       font-size: 1em;
-      // height: 45px;
-      // width: 50%;
       button {
         width: 100%;
         font-size: 1.5em;
         color: $blacker;
-      background-color: transparent;
-      border: none;
+        background-color: transparent;
+        border: none;
       }
       a {
         color: inherit;
@@ -527,7 +529,11 @@ right: -5%;
   flex-direction: column;
   align-items: center;
   .button-div{
-    margin: .5em 0 1em 0;
+    width: 100%;
+    button {
+      width:70%;
+      margin-bottom: .5em;
+    }
   }
   table {
     margin-bottom: 1em;
@@ -535,62 +541,43 @@ right: -5%;
   form {
     width: 60%;
     max-width: 320px;
-
-    // margin: 0 0 1em 0;
     background-color: $red;
     border-radius: 10px;
     border: 1px solid $blacker;
     box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
-    
-      display: flex;
-      flex-direction: column;
-
-      justify-content: center;
-
-      input, select {
-        
-        padding: .1em;
-        margin-left: .5em;
-        width: 90%;
-        background-color: $white;
-        border-top: .1em solid $blacker;
-        border-right: .1em solid $silver;
-        border-bottom: .1em solid $silver;
-        border-left: .1em solid $blacker;
-        border-radius: 5px;
-      }
-      h4 {
-        margin: .1em 0 .1em .5em;
-        color: $white;
-      }
-      button{
-        background-color: $red;
-        border-top: .1em solid $silver;
-        border-right: .1em solid $blacker;
-        border-bottom: .1em solid $blacker;
-        border-left: .1em solid $silver;
-        border-radius: 5px;
-        color: $white;
-        width: 40%;
-        font-size: 1.2em;
-        margin: .1em;
-
-
-      }
-      h2 {
-        font-size: 1.2em;
-        margin: 0;
-        text-align: left;
-        width: 55%;
-        color: $white;
-
-      }
-
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    input, select {
+      padding: .1em;
+      margin-left: .5em;
+      width: 90%;
+      background-color: $white;
+      border-top: .1em solid $blacker;
+      border-right: .1em solid $silver;
+      border-bottom: .1em solid $silver;
+      border-left: .1em solid $blacker;
+      border-radius: 5px;
+    }
+    h4 {
+      margin: .1em 0 .1em .5em;
+      color: $white;
+    }
+    h2 {
+      font-size: 1.2em;
+      margin: 0;
+      text-align: left;
+      width: 55%;
+      color: $white;
     }
   }
-
-
-
+}
+.settings-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 @media (min-width: 800px) {
   .landing-title, .app-header {
     font-size: 2rem;
@@ -604,14 +591,13 @@ right: -5%;
     }
   }
   .header-div{
-
-  .mobile-menu {
-    display: none;
+    .mobile-menu {
+      display: none;
+    }
+    .full-menu {
+      display: block;
+      margin-left: 5em;
+    }
   }
-  .full-menu {
-    display: block;
-    margin-left: 5em;
-  }
-}
 }
 

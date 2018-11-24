@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class Inventory extends Component {
@@ -72,7 +72,7 @@ class Inventory extends Component {
                         {new Date(inventory.inventoryDate).toLocaleDateString()}
                       </td>
                       <td class="data-two">
-                        {inventory.inventoryTotal}
+                        {inventory.inventoryTotal.toFixed(2)}
                       </td>
                       <td class="data-three">
                         <button onClick={() => this.confirmDelete(inventory.id)}>
@@ -88,7 +88,7 @@ class Inventory extends Component {
                         {new Date(inventory.inventoryDate).toLocaleDateString()}
                       </td>
                       <td class="data-two">
-                        {inventory.inventoryTotal}
+                        {inventory.inventoryTotal.toFixed(2)}
                       </td>
                       <td class="data-three">
                         <button onClick={() => this.confirmDelete(inventory.id)}>

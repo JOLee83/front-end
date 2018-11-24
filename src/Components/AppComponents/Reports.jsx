@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class Reports extends Component {
@@ -54,7 +54,7 @@ class Reports extends Component {
             <span><i class="fas fa-circle" /></span>
           </header>
           <div className="button-div">
-            <Link to="/app/details"><button>New Report</button></Link>
+            <Link to="/app/newreport"><button>New Report</button></Link>
           </div>
           <table>
             <thead>
@@ -95,7 +95,6 @@ class Reports extends Component {
                           {Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%
                           </Link>
                       </td>
-
                       <td>
                         <button onClick={() => this.confirmDelete(report.id)}>
                           <i class="fas fa-trash-alt" />

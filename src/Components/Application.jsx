@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 
 import AppHeader from './AppComponents/AppHeader.jsx'
@@ -11,15 +11,11 @@ import Count from './AppComponents/Count.jsx'
 import Settings from './AppComponents/Settings.jsx'
 import Reports from './AppComponents/Reports.jsx'
 import Report from './AppComponents/Report.jsx'
-
-import Details from './AppComponents/Details.jsx'
-
+import NewReport from './AppComponents/NewReport.jsx'
 
 class Application extends Component {
   state = {
     users: [],
-
-
   }
   componentDidMount() {
     axios.get("https://localhost:5001/api/users")
@@ -34,11 +30,9 @@ class Application extends Component {
             name: user.companyName
           })
         }
-      })).then(console.log(this.state))
+      }))
 
   }
-
-
   render() {
     return (
       <Router>
@@ -50,11 +44,9 @@ class Application extends Component {
             <Route path="/app/inputorder" component={InputOrder} /> */}
             <Route path="/app/inventory" component={Inventory} />
             <Route exact path="/app/count" component={Count} />
-            {/* <Route path="/app/count/:inventoriesId" component={Count} /> */}
             <Route path="/app/reports" component={Reports} />
             <Route path="/app/report/:id" component={Report} />
-            <Route path="/app/details" component={Details} />
-            {/* <Route path="/app/details/:reportsId" component={Details} /> */}
+            <Route path="/app/newreport" component={NewReport} />
             <Route path="/app/settings" component={Settings} />
           </Switch>
         </>

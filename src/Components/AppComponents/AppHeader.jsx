@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class AppHeader extends Component {

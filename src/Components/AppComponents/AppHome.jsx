@@ -46,35 +46,36 @@ class AppHome extends Component {
           <tbody>
             {this.state.reports.map((report, index) => {
               if (index === 0) {
-                return (<>
-                  <tr className="odd">
-                    <td><i class="fas fa-calendar-alt" /> Date</td>
-                    <td>{new Date(report.reportDate).toLocaleDateString()}</td>
-                  </tr>
-                  <tr className="even">
-                    <td><i class="fas fa-plus" /> Beginning</td>
-                    <td>${(report.inventoriesBegin).toFixed(2)}</td>
-                  </tr>
-                  <tr className="odd">
-                    <td><i class="fas fa-plus" /> Purchases</td>
-                    <td>${(report.purchases).toFixed(2)}</td>
-                  </tr>
-                  <tr className="even">
-                    <td><i class="fas fa-minus" /> Ending</td>
-                    <td>${(report.inventoriesEnd).toFixed(2)}</td>
-                  </tr>
-                  <tr className="odd">
-                    <td><i class="fas fa-equals" /> COGS <i class="fas fa-dollar-sign" /></td>
-                    <td>${(parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)).toFixed(2)}</td>
-                  </tr>
-                  <tr className="even">
-                    <td><i class="fas fa-divide" /> Sales ($)</td>
-                    <td>${(report.sales).toFixed(2)}</td>
-                  </tr>
-                  <tr className="odd">
-                    <td><i class="fas fa-equals" /> COGS <i class="fas fa-percent" /></td>
-                    <td>{Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%</td>
-                  </tr></>
+                return (
+                  <>
+                    <tr className="odd">
+                      <td><i class="fas fa-calendar-alt" /> Date</td>
+                      <td>{new Date(report.reportDate).toLocaleDateString()}</td>
+                    </tr>
+                    <tr className="even">
+                      <td><i class="fas fa-plus" /> Beginning</td>
+                      <td>${(report.inventoriesBegin).toFixed(2)}</td>
+                    </tr>
+                    <tr className="odd">
+                      <td><i class="fas fa-plus" /> Purchases</td>
+                      <td>${(report.purchases).toFixed(2)}</td>
+                    </tr>
+                    <tr className="even">
+                      <td><i class="fas fa-minus" /> Ending</td>
+                      <td>${(report.inventoriesEnd).toFixed(2)}</td>
+                    </tr>
+                    <tr className="odd">
+                      <td><i class="fas fa-equals" /> COGS <i class="fas fa-dollar-sign" /></td>
+                      <td>${(parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)).toFixed(2)}</td>
+                    </tr>
+                    <tr className="even">
+                      <td><i class="fas fa-divide" /> Sales</td>
+                      <td>${(report.sales).toFixed(2)}</td>
+                    </tr>
+                    <tr className="odd">
+                      <td><i class="fas fa-equals" /> COGS <i class="fas fa-percent" /></td>
+                      <td>{Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%</td>
+                    </tr></>
                 )
 
               }

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Count extends Component {
   state = {
     confirmSubmit: false,
+    confirmDelete: false,
     newItemName: "",
     newItemPrice: null,
     items: [],
     total: 0,
-    date: null
+    date: null,
+    deleteId: null
   }
   componentDidMount() {
     axios.get("https://localhost:5001/api/items")
@@ -30,19 +32,21 @@ class Count extends Component {
     })
   }
   addItem = (e) => {
-    axios.post("https://localhost:5001/api/items", { itemName: this.state.newItemName, itemPrice: this.state.newItemPrice })
+    axios.post("https://localhost:5001/api/items", { itemName: this.state.newItemName, itemCount: 0, itemPrice: this.state.newItemPrice })
       .then(json => {
         this.setState({
           items: this.state.items.concat(json.data)
         })
       })
   }
-  deleteItem = (itemId) => {
-    axios.delete("https://localhost:5001/api/items/" + itemId)
-      .then(json => {
+  deleteItem = () => {
+    axios.delete("https://localhost:5001/api/items/" + this.state.deleteId)
+      .then(() => {
         this.setState({
-          items: this.state.items.filter(item => item.id !== itemId)
+          items: this.state.items.filter(item => item.id !== this.state.deleteId)
         })
+      }).then(() => {
+        this.confirmDelete(null)
       })
   }
   updateItem = (itemId, itemName, itemPrice) => {
@@ -56,6 +60,14 @@ class Count extends Component {
     items[index] = item
     this.setState({ items })
   }
+  updateCount = (e, itemId) => {
+    const index = this.state.items.findIndex(f => f.id === itemId)
+    const item = this.state.items[index]
+    const items = [...this.state.items]
+    item.count = parseFloat(e.target.value, 10)
+    items[index] = item
+    this.setState({ items }, () => this.updateTotal())
+  }
   updatePrice = (e, itemId) => {
     const index = this.state.items.findIndex(f => f.id === itemId)
     const item = this.state.items[index]
@@ -65,11 +77,16 @@ class Count extends Component {
     this.setState({ items }, () => this.updateTotal())
   }
 
-  updateTotal = (e, itemPrice) => {
-    const sum = +(itemPrice) * e.target.value
-    this.setState(prevState => ({
-      total: prevState.total + sum
-    }))
+  updateTotal = () => {
+    let total = 0;
+    this.state.items.map(item => {
+      if (!isNaN(item.count) && !isNaN(item.itemPrice)) {
+        total = total + (item.count * item.itemPrice)
+      }
+    })
+    this.setState({
+      total: total
+    })
   }
   updateDate = e => {
     this.setState({ date: e.target.value })
@@ -85,15 +102,30 @@ class Count extends Component {
       confirmSubmit: !prevState.confirmSubmit
     }))
   }
+  confirmDelete = (itemId) => {
+    this.setState(prevState => ({
+      confirmDelete: !prevState.confirmDelete,
+      deleteId: itemId
+    }))
+  }
   render() {
     return (
       <div className="count-div">
         <div class={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
           <div class="confirm-box">
-            <p>Are You Sure?</p>
+            <p>Submit Count?</p>
             <div>
               <button onClick={this.submitCount}>Yes</button>
               <button onClick={() => this.confirmSubmit()}>No</button>
+            </div>
+          </div>
+        </div>
+        <div class={this.state.confirmDelete ? "confirm" : "unconfirm"}>
+          <div class="confirm-box">
+            <p>Delete Item?</p>
+            <div>
+              <button onClick={() => this.deleteItem()}>Yes</button>
+              <button onClick={() => this.confirmDelete(null)}>No</button>
             </div>
           </div>
         </div>
@@ -105,24 +137,24 @@ class Count extends Component {
         <form>
           <div className="form-div">
             <h2>New Item</h2>
-            <button onClick={this.addItem}>Add to List</button>
+            <button onClick={this.addItem}>Add</button>
           </div>
           <div className="form-div">
             <div>
 
               <input onChange={this._newItemName} />
-              <h4>Item Name</h4>
+              <h4>Name</h4>
             </div>
             <div>
               <input type="number" step="0.01" onChange={this._newItemPrice} />
-              <h4>Cost ($)</h4>
+              <h4>Cost</h4>
             </div>
           </div>
         </form>
         <table>
           <thead>
             <tr>
-              <th>Item</th>
+              <th>Name</th>
               <th>Count</th>
               <th>Cost</th>
               <th>Update</th>
@@ -142,7 +174,9 @@ class Count extends Component {
                     </td>
                     <td className="data-two">
                       <input
-                        onChange={(e) => this.updateTotal(e, item.itemPrice)}
+                        value={item.count}
+                        min="0"
+                        onChange={(e) => this.updateCount(e, item.id)}
                         type="number" />
                     </td>
                     <td className="data-three">
@@ -159,7 +193,7 @@ class Count extends Component {
                       </button>
                     </td>
                     <td className="data-five">
-                      <button onClick={() => this.deleteItem(item.id)}>
+                      <button onClick={() => this.confirmDelete(item.id)}>
                         <i class="fas fa-trash-alt" />
                       </button>
                     </td>
@@ -176,7 +210,9 @@ class Count extends Component {
                     </td>
                     <td className="data-two">
                       <input
-                        onChange={(e) => this.updateTotal(e, item.itemPrice)}
+                        value={item.count}
+
+                        onChange={(e) => this.updateCount(e, item.id)}
                         type="number" />
                     </td>
                     <td className="data-three">
@@ -193,7 +229,7 @@ class Count extends Component {
                       </button>
                     </td>
                     <td className="data-five">
-                      <button onClick={() => this.deleteItem(item.id)}>
+                      <button onClick={() => this.confirmDelete(item.id)}>
                         <i class="fas fa-trash-alt" />
                       </button>
                     </td>
