@@ -37,8 +37,8 @@ class Inventory extends Component {
   render() {
     return (
       <>
-        <div class={this.state.confirmDelete ? "confirm" : "unconfirm"}>
-          <div class="confirm-box">
+        <div className={this.state.confirmDelete ? "confirm" : "unconfirm"}>
+          <div className="confirm-box">
             <p>Delete Count?</p>
             <div>
               <button onClick={this.deleteInventory}>Yes</button>
@@ -50,7 +50,7 @@ class Inventory extends Component {
           <header className="breadcrumbs">
             <span><Link exact to="/app"><i className="fas fa-home" /> Home</Link></span>
             <span className="active"><i className="fas fa-clipboard-list" /> Inventory</span>
-            <span><i class="fas fa-circle" /></span>
+            <span><i className="fas fa-circle" /></span>
           </header>
           <div className="button-div">
             <Link to="/app/count"><button>New Count</button></Link>
@@ -67,32 +67,32 @@ class Inventory extends Component {
               {this.state.inventories.reverse().map((inventory, index) => {
                 if (index % 2 === 0) {
                   return (
-                    <tr className="odd">
-                      <td class="data-one">
+                    <tr key={index} className="odd">
+                      <td className="data-one">
                         {new Date(inventory.inventoryDate).toLocaleDateString()}
                       </td>
-                      <td class="data-two">
-                        {inventory.inventoryTotal.toFixed(2)}
+                      <td className="data-two">
+                        ${inventory.inventoryTotal.toFixed(2)}
                       </td>
-                      <td class="data-three">
+                      <td className="data-three">
                         <button onClick={() => this.confirmDelete(inventory.id)}>
-                          <i class="fas fa-trash-alt" />
+                          <i className="fas fa-trash-alt" />
                         </button>
                       </td>
                     </tr>
                   )
                 } else {
                   return (
-                    <tr className="even">
-                      <td class="data-one">
+                    <tr key={index} className="even">
+                      <td className="data-one">
                         {new Date(inventory.inventoryDate).toLocaleDateString()}
                       </td>
-                      <td class="data-two">
-                        {inventory.inventoryTotal.toFixed(2)}
+                      <td className="data-two">
+                        ${inventory.inventoryTotal.toFixed(2)}
                       </td>
-                      <td class="data-three">
+                      <td className="data-three">
                         <button onClick={() => this.confirmDelete(inventory.id)}>
-                          <i class="fas fa-trash-alt" />
+                          <i className="fas fa-trash-alt" />
                         </button>
                       </td>
                     </tr>

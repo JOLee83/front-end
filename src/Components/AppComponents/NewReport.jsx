@@ -16,7 +16,7 @@ class NewReport extends Component {
     axios.get("https://localhost:5001/api/inventories")
       .then(json => {
         this.setState({
-          inventories: json.data
+          inventories: json.data.reverse()
         })
       })
   }
@@ -50,8 +50,8 @@ class NewReport extends Component {
   render() {
     return (
       <>
-        <div class={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
-          <div class="confirm-box">
+        <div className={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
+          <div className="confirm-box">
             <p>Submit Report?</p>
             <div>
               <button onClick={this.submitReport}>Yes</button>
@@ -92,12 +92,12 @@ class NewReport extends Component {
             </div>
             <div>
 
-              <input type="number" onChange={(e) => this.updatePurchases(e)} />
+              <input type="number" min="0" onChange={(e) => this.updatePurchases(e)} />
               <h4 >Purchases($)</h4>
             </div>
             <div>
 
-              <input type="number" onChange={(e) => this.updateSales(e)} />
+              <input type="number" min="0" onChange={(e) => this.updateSales(e)} />
               <h4>Sales($)</h4>
             </div>
             <div>
@@ -120,31 +120,31 @@ class NewReport extends Component {
             </thead>
             <tbody>
               <tr className="odd">
-                <td><i class="fas fa-calendar-alt" /> Date</td>
+                <td><i className="fas fa-calendar-alt" /> Date</td>
                 <td>{this.state.date}</td>
               </tr>
               <tr className="even">
-                <td><i class="fas fa-plus" /> Beginning</td>
+                <td><i className="fas fa-plus" /> Beginning</td>
                 <td>${parseFloat(this.state.begin).toFixed(2)}</td>
               </tr>
               <tr className="odd">
-                <td><i class="fas fa-plus" /> Purchases</td>
+                <td><i className="fas fa-plus" /> Purchases</td>
                 <td>${parseFloat(this.state.purchases).toFixed(2)}</td>
               </tr>
               <tr className="even">
-                <td><i class="fas fa-minus" /> Ending</td>
+                <td><i className="fas fa-minus" /> Ending</td>
                 <td>${parseFloat(this.state.end).toFixed(2)}</td>
               </tr>
               <tr className="odd">
-                <td><i class="fas fa-equals" /> COGS <i class="fas fa-dollar-sign" /></td>
+                <td><i className="fas fa-equals" /> COGS <i className="fas fa-dollar-sign" /></td>
                 <td>${(parseFloat(this.state.begin) + parseFloat(this.state.purchases) - parseFloat(this.state.end)).toFixed(2)}</td>
               </tr>
               <tr className="even">
-                <td><i class="fas fa-divide" /> Sales</td>
+                <td><i className="fas fa-divide" /> Sales</td>
                 <td>${parseFloat(this.state.sales).toFixed(2)}</td>
               </tr>
               <tr className="odd">
-                <td><i class="fas fa-equals" /> COGS <i class="fas fa-percent" /></td>
+                <td><i className="fas fa-equals" /> COGS <i className="fas fa-percent" /></td>
                 <td>{Math.round(((parseFloat(this.state.begin) + parseFloat(this.state.purchases) - parseFloat(this.state.end)) / parseFloat(this.state.sales) * 100))}%</td>
               </tr>
             </tbody>

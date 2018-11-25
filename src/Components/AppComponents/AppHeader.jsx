@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 class AppHeader extends Component {
@@ -22,14 +22,14 @@ class AppHeader extends Component {
   render() {
     return (
       <div className="header-div">
-        <header className="app-header"><div><i class="fas fa-running" /> Quicklee</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
+        <header className="app-header"><div><i className="fas fa-running" /> Quicklee</div><div className="mobile-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? <i className="fas fa-bars" /> : <i className="fas fa-times" />}</div><div className="full-menu" onClick={this._toggleMenu}>{this.state.actionsMenu === 'hidden' ? 'Menu' : 'Close'}</div></header>
         <nav className={this.state.actionsMenu}>
-          <Link exact to="/app" onClick={this._toggleMenu}><i className="fas fa-home" /> Home</Link>
-          {/* <Link to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</Link> */}
-          <Link to="/app/inventory" onClick={this._toggleMenu}><i className="fas fa-clipboard-list" /> Inventory</Link>
-          <Link to="/app/reports" onClick={this._toggleMenu}><i className="fas fa-file-alt" /> Reports</Link>
-          <Link to="/app/settings" onClick={this._toggleMenu}><i className="fas fa-cog" /> Settings</Link>
-          <Link to="/"><i className="fas fa-sign-out-alt" /> Logout</Link>
+          <NavLink exact to="/app" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-home" /> Home</NavLink>
+          {/* <NavLink to="/app/orders" onClick={this._toggleMenu}><i className="fas fa-box" /> Orders</NavLink> */}
+          <NavLink to="/app/inventory" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-clipboard-list" /> Inventory</NavLink>
+          <NavLink to="/app/reports" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-file-alt" /> Reports</NavLink>
+          <NavLink to="/app/settings" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-cog" /> Settings</NavLink>
+          <NavLink to="/"><i className="fas fa-sign-out-alt" /> Logout</NavLink>
         </nav>
       </div>
     );

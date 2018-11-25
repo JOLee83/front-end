@@ -111,8 +111,8 @@ class Count extends Component {
   render() {
     return (
       <div className="count-div">
-        <div class={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
-          <div class="confirm-box">
+        <div className={this.state.confirmSubmit ? "confirm" : "unconfirm"}>
+          <div className="confirm-box">
             <p>Submit Count?</p>
             <div>
               <button onClick={this.submitCount}>Yes</button>
@@ -120,8 +120,8 @@ class Count extends Component {
             </div>
           </div>
         </div>
-        <div class={this.state.confirmDelete ? "confirm" : "unconfirm"}>
-          <div class="confirm-box">
+        <div className={this.state.confirmDelete ? "confirm" : "unconfirm"}>
+          <div className="confirm-box">
             <p>Delete Item?</p>
             <div>
               <button onClick={() => this.deleteItem()}>Yes</button>
@@ -132,7 +132,7 @@ class Count extends Component {
         <header className="breadcrumbs">
           <span><Link exact to="/app"><i className="fas fa-home" /> Home</Link></span>
           <span><Link exact to="/app/inventory"><i className="fas fa-clipboard-list" /> Inventory</Link></span>
-          <span className="active"><i class="fas fa-list-ol" /> Count</span>
+          <span className="active"><i className="fas fa-list-ol" /> Count</span>
         </header>
         <form>
           <div className="form-div">
@@ -189,12 +189,12 @@ class Count extends Component {
                     </td>
                     <td className="data-four">
                       <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} >
-                        <i class="far fa-arrow-alt-circle-up" />
+                        <i className="far fa-arrow-alt-circle-up" />
                       </button>
                     </td>
                     <td className="data-five">
                       <button onClick={() => this.confirmDelete(item.id)}>
-                        <i class="fas fa-trash-alt" />
+                        <i className="fas fa-trash-alt" />
                       </button>
                     </td>
                   </tr>
@@ -211,7 +211,7 @@ class Count extends Component {
                     <td className="data-two">
                       <input
                         value={item.count}
-
+                        min="0"
                         onChange={(e) => this.updateCount(e, item.id)}
                         type="number" />
                     </td>
@@ -225,12 +225,12 @@ class Count extends Component {
                     </td>
                     <td className="data-four">
                       <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} >
-                        <i class="far fa-arrow-alt-circle-up" />
+                        <i className="far fa-arrow-alt-circle-up" />
                       </button>
                     </td>
                     <td className="data-five">
                       <button onClick={() => this.confirmDelete(item.id)}>
-                        <i class="fas fa-trash-alt" />
+                        <i className="fas fa-trash-alt" />
                       </button>
                     </td>
                   </tr>
@@ -240,16 +240,16 @@ class Count extends Component {
           </tbody>
           <tfoot>
             <tr>
-              <th colspan="2">Total</th>
-              <th colspan="3">${this.state.total.toFixed(2)}</th>
+              <th colSpan="2">Total</th>
+              <th colSpan="3">${this.state.total.toFixed(2)}</th>
             </tr>
             <tr>
-              <th colspan="3">
+              <th colSpan="3">
                 <input
                   type="date"
                   onChange={(e) => { this.updateDate(e) }} />
               </th>
-              <th colspan="2">
+              <th colSpan="2">
                 <button onClick={() => this.confirmSubmit()}>Submit</button>
               </th>
             </tr>

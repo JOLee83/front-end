@@ -3,17 +3,48 @@ $black: #403F4C;
 $blacker: #393E41;
 $silver: #BFC0C0;
 $red: #BD1E1E;
-
+$font:'Saira', sans-serif;
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Saira', sans-serif;
+  font-family: $font;
   background-color: $white;
 }
 input {
-  font-family: 'Saira', sans-serif;
+  font-family: $font;
+  color: $blacker;
+  border-top: .1em solid $blacker;
+  border-right: .1em solid $silver;
+  border-bottom: .1em solid $silver;
+  border-left: .1em solid $blacker;
+  border-radius: 5px;
 
 }
+button {
+  font-family: $font;
+  color: $blacker;
+  background-image: linear-gradient(to top right, $silver, $white);
+  border-top: .1em solid $silver;
+  border-right: .1em solid $blacker;
+  border-bottom: .1em solid $blacker;
+  border-left: .1em solid $silver;
+  border-radius: 5px;
+}
+button:active {
+  background-image: linear-gradient(to top right, $white, $silver);
+  border-bottom: .1em solid $silver;
+  border-left: .1em solid $blacker;
+  border-top: .1em solid $blacker;
+  border-right: .1em solid $silver;
+}
+.button-div {
+  margin-bottom: 1em;
+  button {
+    font-size: 1.2em;
+    width: 125px;
+  }
+}
+
 .even {
   background-color: $silver;
   color: $blacker;
@@ -50,9 +81,6 @@ input {
       width: 5em;
       height: 2em;
       border-radius: 5px;
-      background-image: linear-gradient(to top right, $silver, $white);
-      font-family: 'Saira', sans-serif;
-
     }
     p {
       margin: 0;
@@ -60,7 +88,7 @@ input {
   }
 
 }
-//
+
 .landing-title {
   background-color:$red;
   font-size: 30px;
@@ -99,14 +127,9 @@ input {
     padding: .1em;
     margin: 1em;
     border-radius: 5px;
-    font-family: 'Saira', sans-serif;
-    color: $blacker;
     font-size: 1.2em;
-    background-image: linear-gradient(to top right, $silver, $white)
   }
-  button:active {
-    background-image: linear-gradient(to top right, $white, $silver)
-  }
+  
 }
 .login-div {
   height: 80vh;
@@ -124,7 +147,6 @@ input {
     border-radius: 5px;
     background-color:$red;
     color: $white;
-
     input {
       width: 95%;
       padding: .2em .2em 0 .2em;
@@ -146,18 +168,11 @@ input {
     padding: .1em;
     margin: 1em;
     border-radius: 5px;
-    font-family: 'Saira', sans-serif;
-    color: $blacker;
     font-size: 1.2em;
-    background-image: linear-gradient(to top right, $silver, $white)
-  }
-  button:active {
-    background-image: linear-gradient(to top right, $white, $silver)
-
   }
 }
 .breadcrumbs {
-  margin-top: 4.5em;
+  margin: 4.5em 0 1em 0;
   display: flex;
   font-size: .9em;
   width: 90%;
@@ -184,28 +199,27 @@ input {
 }
 // AppHeader
 .header-div {
-
-.app-header {
-  position: fixed;
-  width: calc(100% - .7em);
-  background-color:$red;
-  font-size: 30px;
-  padding: .1em .3em .1em .5em;
-  color: $white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-}
-.hidden, .shown {
-  top: 3.4em;
-  display:flex;
-  flex-direction: column;
-  position: fixed;
-  transition: right .5s ease-in-out;
-  width: 60%;
-  max-width: 250px;
-  z-index: 80;
+  .app-header {
+    position: fixed;
+    width: calc(100% - .7em);
+    background-color:$red;
+    font-size: 30px;
+    padding: .1em .3em .1em .5em;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  .hidden, .shown {
+    top: 3.4em;
+    display:flex;
+    flex-direction: column;
+    position: fixed;
+    transition: right .5s ease-in-out;
+    width: 60%;
+    max-width: 250px;
+    z-index: 80;
   a{
     border-radius: 5px;
     border: 1px solid $white;
@@ -215,6 +229,9 @@ input {
     font-size: 1.5em;
     text-decoration: none;
     box-shadow: -.1em .1em .1em $black;
+  }
+  .active-link{
+    color: $blacker;
   }
 }
 .hidden {
@@ -265,18 +282,10 @@ right: -5%;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  // padding-top: .5em;
-  .breadcrumbs {
-    margin-bottom: 0;
-  }
- .button-div{
-   button{
-   margin: 1em 0 1em 0;
-   }
- }
   table {
     max-width: 400px;
     border-radius: 10px;
+    margin-bottom: 1em;
     border: 1px solid $blacker;
     overflow: hidden;
     background-color: $red;
@@ -286,7 +295,6 @@ right: -5%;
       font-size: 1em;
       height: 45px;
       padding-left:1em;
-      // width: 33%;
     }
     th {
       height: 30px;
@@ -303,7 +311,7 @@ right: -5%;
       display: flex;
       button {
         font-size: 1.5em;
-        color: $blacker;
+        background-image: none;
         background-color: transparent;
         border: none;
       }
@@ -313,22 +321,7 @@ right: -5%;
     }
   }
 }
-.button-div {
-  display: flex;
-  justify-content: center;
-  button {
-  margin-top: .5em;
-  
-    border-radius: 5px;
-    font-family: 'Saira', sans-serif;
-    color: $blacker;
-    font-size: 1em;
-    background-image: linear-gradient(to top right, $silver, $white);
-  }
-  button:active {
-    background-image: linear-gradient(to top right, $white, $silver);
-  }
-}
+
 .input-order {
   form {
     display: flex;
@@ -352,7 +345,6 @@ right: -5%;
   form {
     width: 95%;
     max-width: 400px;
-
     margin: 0 0 1em 0;
     background-color: $red;
     border-radius: 10px;
@@ -377,13 +369,7 @@ right: -5%;
         color: $white;
       }
       button{
-        background-image: linear-gradient(to top right, $silver, $white);
-        border-top: .1em solid $silver;
-        border-right: .1em solid $blacker;
-        border-bottom: .1em solid $blacker;
-        border-left: .1em solid $silver;
         border-radius: 5px;
-        color: $blacker;
         width: 20%;
         font-size: 1.2em;
         margin: .1em .2em;
@@ -399,31 +385,67 @@ right: -5%;
     }
   }
   table {
-    margin: 0 .5em;
+    margin: 0 .5em 1em .5em;
     max-width: 400px;
     border-radius: 10px;
     border: 1px solid $blacker;
     overflow: hidden;
     background-color: $red;
     box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
-    
     td {
-    
+      border: .01em solid $blacker;
       font-size: 1em;
       height: 45px;
+      button {
+        width: 100%;
+        font-size: 1.5em;
+        background-color: transparent;
+        background-image: none;
+        border: none;
+      }
+      input {  
+        border: none;    
+        background-color: transparent;
+        height: 100%;
+  
+      }
+    }
+
     
-    }
     th {
-      height: 30px;
+      height: 35px;
       color: $white;
+      button {
+        height: 100%;
+        width: 100%;
+        font-size: 1.5em;
+
+      }
+      input {
+        height: 100%;
+
+        border-top: .1em solid $blacker;
+        border-right: .1em solid $silver;
+        border-bottom: .1em solid $silver;
+        border-left: .1em solid $blacker;
+      }
     }
-    input {
-      
-      background-color: transparent;
-      // border:none;
-      height: 100%;
-      // padding: .5em;
+    .even { 
+      .data-one, .data-two, .data-three {
+      border-top: .1em solid $blacker;
+      border-right: .1em solid $white;
+      border-bottom: .1em solid $white;
+      border-left: .1em solid $blacker;
     }
+  }
+  .odd {
+    .data-one, .data-two, .data-three {
+      border-top: .1em solid $blacker;
+      border-right: .1em solid $silver;
+      border-bottom: .1em solid $silver;
+      border-left: .1em solid $blacker;
+    }
+  }
     .data-one{
       max-width: 30VW;
       input{
@@ -434,44 +456,29 @@ right: -5%;
       max-width: 10vw;
       input {
         width: 90%;
+        text-align: center;
       }
     }
     .data-three {
       max-width: 20vw;
       input {
-        width: 95%
+        width: 95%;
+        text-align: center;
+
       }
     }
     .data-four, .data-five {
       max-width: 10vw;
     }
-    button {
-      width: 100%;
-      font-size: 1.5em;
-      color: $blacker;
-      background-color: transparent;
-      border: none;
-
-    }
+    
     tfoot {
       button{
-        background-image: linear-gradient(to top right, $silver, $white);
-        color: $blacker;
-
-        border-top: .1em solid $silver;
-        border-right: .1em solid $blacker;
-        border-bottom: .1em solid $blacker;
-        border-left: .1em solid $silver;
         border-radius: 0 5px 5px 0;
       }
       input{
         width: 100%;
         text-align: center;
         background-color: $white;
-        border-top: .1em solid $blacker;
-        border-right: .1em solid $silver;
-        border-bottom: .1em solid $silver;
-        border-left: .1em solid $blacker;
         border-radius: 5px 0 0 5px;
       }
     }
@@ -482,15 +489,8 @@ right: -5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  .button-div {
-    button{
-      margin: 0;
-    }
-    margin-bottom: 1em;
-  }
   table {
-    margin: 0 .5em;
+    margin: 0 .5em 1em .5em;
     width: 90%;
     max-width: 400px;
     border-radius: 10px;
@@ -498,14 +498,13 @@ right: -5%;
     overflow: hidden;
     background-color: $red;
     box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
-    
     td {
       padding: .5em;
       font-size: 1em;
       button {
         width: 100%;
         font-size: 1.5em;
-        color: $blacker;
+        background-image: none;
         background-color: transparent;
         border: none;
       }
@@ -519,20 +518,26 @@ right: -5%;
     }
   }
 }
+
+// report component
 .report-div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+// new report component
 .details-div {
   display: flex;
   flex-direction: column;
   align-items: center;
   .button-div{
+    display: flex;
+    justify-content: center;
     width: 100%;
+    margin-bottom: .5em;
     button {
-      width:70%;
-      margin-bottom: .5em;
+      width: 90%;
     }
   }
   table {
@@ -573,11 +578,19 @@ right: -5%;
     }
   }
 }
+//settings component
 .settings-div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  h4 {
+    margin: .1em 0 .5em 0;
+  }
 }
+
+
+
+
 @media (min-width: 800px) {
   .landing-title, .app-header {
     font-size: 2rem;

@@ -38,8 +38,8 @@ class Reports extends Component {
   render() {
     return (
       <>
-        <div class={this.state.confirmDelete ? "confirm" : "unconfirm"}>
-          <div class="confirm-box">
+        <div className={this.state.confirmDelete ? "confirm" : "unconfirm"}>
+          <div className="confirm-box">
             <p>Delete Report?</p>
             <div>
               <button onClick={this.deleteReport}>Yes</button>
@@ -51,7 +51,7 @@ class Reports extends Component {
           <header className="breadcrumbs">
             <span><Link exact to="/app"><i className="fas fa-home" /> Home</Link></span>
             <span className="active"><i className="fas fa-file-alt" /> Reports</span>
-            <span><i class="fas fa-circle" /></span>
+            <span><i className="fas fa-circle" /></span>
           </header>
           <div className="button-div">
             <Link to="/app/newreport"><button>New Report</button></Link>
@@ -68,7 +68,7 @@ class Reports extends Component {
               {this.state.reports.map((report, index) => {
                 if (index % 2 === 0) {
                   return (
-                    <tr className="odd">
+                    <tr key={index} className="odd">
                       <td>
                         <Link to={`/app/report/${report.id}`}>{new Date(report.reportDate).toLocaleDateString()}</Link>
                       </td>
@@ -79,14 +79,14 @@ class Reports extends Component {
                       </td>
                       <td>
                         <button onClick={() => this.confirmDelete(report.id)}>
-                          <i class="fas fa-trash-alt" />
+                          <i className="fas fa-trash-alt" />
                         </button>
                       </td>
                     </tr>
                   )
                 } else {
                   return (
-                    <tr className="even">
+                    <tr key={index} className="even">
                       <td>
                         <Link to={`/app/report/${report.id}`}>{new Date(report.reportDate).toLocaleDateString()}</Link>
                       </td>
@@ -97,7 +97,7 @@ class Reports extends Component {
                       </td>
                       <td>
                         <button onClick={() => this.confirmDelete(report.id)}>
-                          <i class="fas fa-trash-alt" />
+                          <i className="fas fa-trash-alt" />
                         </button>
                       </td>
                     </tr>

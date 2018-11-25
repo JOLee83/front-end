@@ -19,7 +19,9 @@ class Settings extends Component {
           <h4>User Name</h4>
           <input type="email" />
           <h4>E-mail</h4>
-          <button>Update</button>
+          <div className="button-div">
+            <button>Update</button>
+          </div>
         </form>
 
       </div>

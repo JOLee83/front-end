@@ -13,8 +13,6 @@ class Report extends Component {
         this.setState({
           reports: json.data
         })
-        console.log(this.props)
-        console.log(this.state.reports)
       })
   }
 
@@ -29,51 +27,48 @@ class Report extends Component {
         <table className="home-table">
           <thead>
             <tr>
-              <th colSpan="2">Last Inventory</th>
+              <th colSpan="2">Inventory Report</th>
             </tr>
             <tr>
               <th colSpan="2">For "Company Name"</th>
             </tr>
           </thead>
-          <tbody>
-            {this.state.reports.map((report) => {
-              if (String(report.id) === this.props.match.params.id) {
-                return (<>
+          {this.state.reports.map((report, index) => {
+            if (String(report.id) === this.props.match.params.id) {
+              return (
+                <tbody key={index}>
                   <tr className="odd">
-                    <td><i class="fas fa-calendar-alt" /> Date</td>
+                    <td><i className="fas fa-calendar-alt" /> Date</td>
                     <td>{new Date(report.reportDate).toLocaleDateString()}</td>
                   </tr>
                   <tr className="even">
-                    <td><i class="fas fa-plus" /> Beginning</td>
+                    <td><i className="fas fa-plus" /> Beginning</td>
                     <td>${(report.inventoriesBegin).toFixed(2)}</td>
                   </tr>
                   <tr className="odd">
-                    <td><i class="fas fa-plus" /> Purchases</td>
+                    <td><i className="fas fa-plus" /> Purchases</td>
                     <td>${(report.purchases).toFixed(2)}</td>
                   </tr>
                   <tr className="even">
-                    <td><i class="fas fa-minus" /> Ending</td>
+                    <td><i className="fas fa-minus" /> Ending</td>
                     <td>${(report.inventoriesEnd).toFixed(2)}</td>
                   </tr>
                   <tr className="odd">
-                    <td><i class="fas fa-equals" /> COGS <i class="fas fa-dollar-sign" /></td>
+                    <td><i className="fas fa-equals" /> COGS <i className="fas fa-dollar-sign" /></td>
                     <td>${(parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)).toFixed(2)}</td>
                   </tr>
                   <tr className="even">
-                    <td><i class="fas fa-divide" /> Sales</td>
+                    <td><i className="fas fa-divide" /> Sales</td>
                     <td>${(report.sales).toFixed(2)}</td>
                   </tr>
                   <tr className="odd">
-                    <td><i class="fas fa-equals" /> COGS <i class="fas fa-percent" /></td>
+                    <td><i className="fas fa-equals" /> COGS <i className="fas fa-percent" /></td>
                     <td>{Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%</td>
                   </tr>
-                </>
-                )
-
-              }
-            })}
-
-          </tbody>
+                </tbody>
+              )
+            }
+          })}
           <tfoot>
             <tr>
               <th colSpan="2"></th>
