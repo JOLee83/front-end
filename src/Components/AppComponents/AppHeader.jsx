@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+import Auth from '../../Auth/Auth.js';
 
+const auth = new Auth();
 
 class AppHeader extends Component {
   state = {
@@ -19,6 +21,9 @@ class AppHeader extends Component {
       }
     })
   }
+  _logout = () => {
+    auth.logout()
+  }
   render() {
     return (
       <div className="header-div">
@@ -29,7 +34,7 @@ class AppHeader extends Component {
           <NavLink to="/app/inventory" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-clipboard-list" /> Inventory</NavLink>
           <NavLink to="/app/reports" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-file-alt" /> Reports</NavLink>
           <NavLink to="/app/settings" onClick={this._toggleMenu} activeClassName="active-link"><i className="fas fa-cog" /> Settings</NavLink>
-          <NavLink to="/"><i className="fas fa-sign-out-alt" /> Logout</NavLink>
+          <button onClick={this._logout}><i className="fas fa-sign-out-alt" /> Sign Out</button>
         </nav>
       </div>
     );

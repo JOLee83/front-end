@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 
 import AppHeader from './AppComponents/AppHeader.jsx'
@@ -12,6 +12,8 @@ import Settings from './AppComponents/Settings.jsx'
 import Reports from './AppComponents/Reports.jsx'
 import Report from './AppComponents/Report.jsx'
 import NewReport from './AppComponents/NewReport.jsx'
+
+import history from '../history';
 
 class Application extends Component {
   state = {
@@ -35,7 +37,7 @@ class Application extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <>
           <AppHeader />
           <Switch>

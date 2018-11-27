@@ -114,9 +114,9 @@ class NewReport extends Component {
               <tr>
                 <th colSpan="2">Inventory Report</th>
               </tr>
-              <tr>
+              {/* <tr>
                 <th colSpan="2">For "Company Name"</th>
-              </tr>
+              </tr> */}
             </thead>
             <tbody>
               <tr className="odd">

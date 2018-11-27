@@ -157,7 +157,7 @@ class Count extends Component {
               <th>Name</th>
               <th>Count</th>
               <th>Cost</th>
-              <th>Update</th>
+              {/* <th>Update</th> */}
               <th>Delete</th>
             </tr>
           </thead>
@@ -170,6 +170,8 @@ class Count extends Component {
                       <input
                         value={item.itemName}
                         onChange={(e) => this.updateName(e, item.id)}
+                        onBlur={() => this.updateItem(item.id, item.itemName, item.itemPrice)}
+
                       />
                     </td>
                     <td className="data-two">
@@ -185,14 +187,16 @@ class Count extends Component {
                         value={item.itemPrice}
                         step="any"
                         onChange={(e) => this.updatePrice(e, item.id)}
+                        onBlur={() => this.updateItem(item.id, item.itemName, item.itemPrice)}
+
                       />
                     </td>
-                    <td className="data-four">
+                    {/* <td className="data-four">
                       <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} >
                         <i className="far fa-arrow-alt-circle-up" />
                       </button>
-                    </td>
-                    <td className="data-five">
+                    </td> */}
+                    <td className="data-four">
                       <button onClick={() => this.confirmDelete(item.id)}>
                         <i className="fas fa-trash-alt" />
                       </button>
@@ -206,6 +210,8 @@ class Count extends Component {
                       <input
                         value={item.itemName}
                         onChange={(e) => this.updateName(e, item.id)}
+                        onBlur={() => this.updateItem(item.id, item.itemName, item.itemPrice)}
+
                       />
                     </td>
                     <td className="data-two">
@@ -221,14 +227,15 @@ class Count extends Component {
                         value={item.itemPrice}
                         step="any"
                         onChange={(e) => this.updatePrice(e, item.id)}
+                        onBlur={() => this.updateItem(item.id, item.itemName, item.itemPrice)}
                       />
                     </td>
-                    <td className="data-four">
+                    {/* <td className="data-four">
                       <button onClick={() => this.updateItem(item.id, item.itemName, item.itemPrice)} >
                         <i className="far fa-arrow-alt-circle-up" />
                       </button>
-                    </td>
-                    <td className="data-five">
+                    </td> */}
+                    <td className="data-four">
                       <button onClick={() => this.confirmDelete(item.id)}>
                         <i className="fas fa-trash-alt" />
                       </button>
@@ -241,10 +248,10 @@ class Count extends Component {
           <tfoot>
             <tr>
               <th colSpan="2">Total</th>
-              <th colSpan="3">${this.state.total.toFixed(2)}</th>
+              <th colSpan="2">${this.state.total.toFixed(2)}</th>
             </tr>
             <tr>
-              <th colSpan="3">
+              <th colSpan="2">
                 <input
                   type="date"
                   onChange={(e) => { this.updateDate(e) }} />

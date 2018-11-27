@@ -3,7 +3,13 @@ import axios from 'axios'
 
 class AppHome extends Component {
   state = {
-    reports: [],
+    reports: [{
+      reportDate: new Date(),
+      inventoriesBegin: 0.00,
+      inventoriesEnd: 0.00,
+      purchases: 0.00,
+      sales: 0.00
+    }],
     users: []
   }
   componentDidMount() {
@@ -74,7 +80,7 @@ class AppHome extends Component {
                   </tr>
                   <tr className="odd">
                     <td><i className="fas fa-equals" /> COGS <i className="fas fa-percent" /></td>
-                    <td>{Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%</td>
+                    <td>{report.sales !== 0 ? Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100)) : 0}%</td>
                   </tr>
                 </tbody>
               )

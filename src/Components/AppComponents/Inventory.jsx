@@ -14,7 +14,7 @@ class Inventory extends Component {
     axios.get("https://localhost:5001/api/inventories")
       .then(json => {
         this.setState({
-          inventories: json.data
+          inventories: json.data.reverse()
         })
         console.log(this.state.inventories)
       })
@@ -64,7 +64,7 @@ class Inventory extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.inventories.reverse().map((inventory, index) => {
+              {this.state.inventories.map((inventory, index) => {
                 if (index % 2 === 0) {
                   return (
                     <tr key={index} className="odd">

@@ -216,11 +216,12 @@ button:active {
     display:flex;
     flex-direction: column;
     position: fixed;
-    transition: right .5s ease-in-out;
+    transition: .5s ease-in-out;
     width: 60%;
     max-width: 250px;
     z-index: 80;
-  a{
+  a, button{
+    text-align: left;
     border-radius: 5px;
     border: 1px solid $white;
     color: $white;
@@ -229,16 +230,20 @@ button:active {
     font-size: 1.5em;
     text-decoration: none;
     box-shadow: -.1em .1em .1em $black;
+    transition: .4s ease-in-out;
+    background-image: none;
   }
   .active-link{
-    color: $blacker;
+    color: $red;
+    background-color: $white;
+    border-color: $red;
   }
 }
 .hidden {
   right: -100%;
 }
 .shown {
-right: -5%;
+  right: -5%;
 }
 .full-menu {
   display:none;
@@ -386,16 +391,18 @@ right: -5%;
   }
   table {
     margin: 0 .5em 1em .5em;
-    max-width: 400px;
+    // max-width: 400px;
     border-radius: 10px;
     border: 1px solid $blacker;
-    overflow: hidden;
+    // overflow: hidden;
     background-color: $red;
     box-shadow: .1em .1em .1em $blacker, -.1em -.1em .1em $blacker, .1em -.1em .1em $blacker, -.1em .1em .1em $blacker;
+    // background-color: $red;
     td {
+
       border: .01em solid $blacker;
       font-size: 1em;
-      height: 45px;
+      height: 35px;
       button {
         width: 100%;
         font-size: 1.5em;
@@ -406,7 +413,7 @@ right: -5%;
       input {  
         border: none;    
         background-color: transparent;
-        height: 100%;
+        // height: 100%;
   
       }
     }
@@ -432,11 +439,17 @@ right: -5%;
     }
     .even { 
       .data-one, .data-two, .data-three {
-      border-top: .1em solid $blacker;
-      border-right: .1em solid $white;
-      border-bottom: .1em solid $white;
-      border-left: .1em solid $blacker;
-    }
+        border-top: .1em solid $blacker;
+        border-right: .1em solid $white;
+        border-bottom: .1em solid $white;
+        border-left: .1em solid $blacker;
+      }
+      .data-four {
+        border-bottom: .1em solid $blacker;
+        border-left: .1em solid $white;
+        border-top: .1em solid $white;
+        border-right: .1em solid $blacker;
+      }
   }
   .odd {
     .data-one, .data-two, .data-three {
@@ -445,30 +458,43 @@ right: -5%;
       border-bottom: .1em solid $silver;
       border-left: .1em solid $blacker;
     }
+    .data-four {
+      border-bottom: .1em solid $blacker;
+      border-left: .1em solid $silver;
+      border-top: .1em solid $silver;
+      border-right: .1em solid $blacker;
+    }
   }
     .data-one{
-      max-width: 30VW;
+      border-radius: 5px 0 0 5px;
+      // width: 100vw;
+      overflow: hidden;
+
       input{
-        width: 95%;
+        // width: 100%;
       }
     }
     .data-two {
-      max-width: 10vw;
+      width: 35px;
       input {
-        width: 90%;
+        // width: 90%;
         text-align: center;
       }
     }
     .data-three {
-      max-width: 20vw;
+      width: 70px;
       input {
-        width: 95%;
+        // width: 100%;
         text-align: center;
 
       }
     }
-    .data-four, .data-five {
-      max-width: 10vw;
+    .data-four, {
+      width: 35px;
+      border-radius: 0 5px 5px 0;
+      overflow: hidden;
+
+      
     }
     
     tfoot {
