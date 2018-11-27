@@ -100,6 +100,11 @@ class Inventory extends Component {
                 }
               })}
             </tbody>
+            <tfoot>
+              <tr>
+                <th colSpan="3"></th>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </>

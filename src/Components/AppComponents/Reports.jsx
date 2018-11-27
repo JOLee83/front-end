@@ -69,15 +69,15 @@ class Reports extends Component {
                 if (index % 2 === 0) {
                   return (
                     <tr key={index} className="odd">
-                      <td>
+                      <td className="data-one">
                         <Link to={`/app/report/${report.id}`}>{new Date(report.reportDate).toLocaleDateString()}</Link>
                       </td>
-                      <td>
+                      <td className="data-two">
                         <Link to={`/app/report/${report.id}`}>
                           {String(Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100)))}%
                       </Link>
                       </td>
-                      <td>
+                      <td className="data-three">
                         <button onClick={() => this.confirmDelete(report.id)}>
                           <i className="fas fa-trash-alt" />
                         </button>
@@ -87,15 +87,15 @@ class Reports extends Component {
                 } else {
                   return (
                     <tr key={index} className="even">
-                      <td>
+                      <td className="data-one">
                         <Link to={`/app/report/${report.id}`}>{new Date(report.reportDate).toLocaleDateString()}</Link>
                       </td>
-                      <td>
+                      <td className="data-two">
                         <Link to={`/app/report/${report.id}`}>
                           {Math.round(((parseFloat(report.inventoriesBegin) + parseFloat(report.purchases) - parseFloat(report.inventoriesEnd)) / parseFloat(report.sales) * 100))}%
                           </Link>
                       </td>
-                      <td>
+                      <td className="data-three">
                         <button onClick={() => this.confirmDelete(report.id)}>
                           <i className="fas fa-trash-alt" />
                         </button>
@@ -105,6 +105,9 @@ class Reports extends Component {
                 }
               })}
             </tbody>
+            <tfoot>
+              <tr><th colSpan="3"></th></tr>
+            </tfoot>
           </table>
         </div>
       </>

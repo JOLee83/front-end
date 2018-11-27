@@ -120,32 +120,32 @@ class NewReport extends Component {
             </thead>
             <tbody>
               <tr className="odd">
-                <td><i className="fas fa-calendar-alt" /> Date</td>
-                <td>{this.state.date}</td>
+                <td className="left"><i className="fas fa-calendar-alt" /> Date</td>
+                <td className="right">{this.state.date}</td>
               </tr>
               <tr className="even">
-                <td><i className="fas fa-plus" /> Beginning</td>
-                <td>${parseFloat(this.state.begin).toFixed(2)}</td>
+                <td className="left"><i className="fas fa-plus" /> Beginning</td>
+                <td className="right">${parseFloat(this.state.begin).toFixed(2)}</td>
               </tr>
               <tr className="odd">
-                <td><i className="fas fa-plus" /> Purchases</td>
-                <td>${parseFloat(this.state.purchases).toFixed(2)}</td>
+                <td className="left"><i className="fas fa-plus" /> Purchases</td>
+                <td className="right">${parseFloat(this.state.purchases).toFixed(2)}</td>
               </tr>
               <tr className="even">
-                <td><i className="fas fa-minus" /> Ending</td>
-                <td>${parseFloat(this.state.end).toFixed(2)}</td>
+                <td className="left"><i className="fas fa-minus" /> Ending</td>
+                <td className="right">${parseFloat(this.state.end).toFixed(2)}</td>
               </tr>
               <tr className="odd">
-                <td><i className="fas fa-equals" /> COGS <i className="fas fa-dollar-sign" /></td>
-                <td>${(parseFloat(this.state.begin) + parseFloat(this.state.purchases) - parseFloat(this.state.end)).toFixed(2)}</td>
+                <td className="left"><i className="fas fa-equals" /> COGS <i className="fas fa-dollar-sign" /></td>
+                <td className="right">${(parseFloat(this.state.begin) + parseFloat(this.state.purchases) - parseFloat(this.state.end)).toFixed(2)}</td>
               </tr>
               <tr className="even">
-                <td><i className="fas fa-divide" /> Sales</td>
-                <td>${parseFloat(this.state.sales).toFixed(2)}</td>
+                <td className="left"><i className="fas fa-divide" /> Sales</td>
+                <td className="right">${parseFloat(this.state.sales).toFixed(2)}</td>
               </tr>
               <tr className="odd">
-                <td><i className="fas fa-equals" /> COGS <i className="fas fa-percent" /></td>
-                <td>{Math.round(((parseFloat(this.state.begin) + parseFloat(this.state.purchases) - parseFloat(this.state.end)) / parseFloat(this.state.sales) * 100))}%</td>
+                <td className="left"><i className="fas fa-equals" /> COGS <i className="fas fa-percent" /></td>
+                <td className="right">{Math.round(((parseFloat(this.state.begin) + parseFloat(this.state.purchases) - parseFloat(this.state.end)) / parseFloat(this.state.sales) * 100))}%</td>
               </tr>
             </tbody>
             <tfoot>

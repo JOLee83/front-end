@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 
 
 class Settings extends Component {
+  state = {
+    users: []
+  }
+  componentDidMount = () => {
+    axios.get("https://localhost:5001/api/users")
+      .then(json => {
+        this.setState({
+          users: json.data
+        })
+      })
+  };
+  updateCompanyName = (event, userId, companyName) => {
+    axios.put("https://localhost:5001/api/users/" + userId, { id: userId, companyName: companyName })
+  }
+  updateName = (e, userId) => {
+    const index = this.state.users.findIndex(f => f.id === userId)
+    const user = this.state.users[index]
+    const users = [...this.state.users]
+    user.companyName = e.target.value
+    users[index] = user
+    this.setState({ users })
+  }
   render() {
     return (
       <div className="settings-div">
@@ -11,18 +35,24 @@ class Settings extends Component {
           <span className="active"><i className="fas fa-cog" /> Settings</span>
           <span><i className="fas fa-circle" /></span>
         </header>
-        <form>
-          <input />
-          <h4>Company Name</h4>
-          <input />
-          <h4>User Name</h4>
-          <input type="email" />
-          <h4>E-mail</h4>
-          <div className="button-div">
-            <button>Update</button>
-          </div>
-        </form>
-      </div>
+            {this.state.users.map((user, index) => {
+              if (index === 0) {
+                return (
+                  <div >
+
+                  <input 
+                    value={user.companyName}
+                    onChange={(e) => this.updateName(e, user.id)} />
+                  <h4>Company Name</h4>
+                  <button onClick={(e) => this.updateCompanyName(e, user.id, user.companyName)}>Update</button>
+                  </div>
+                  )
+              }
+            })}
+\
+
+         
+      </div >
     );
   }
 }
