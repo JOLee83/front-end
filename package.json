@@ -2,7 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jolee83.github.io/",
+  "homepage": "https://jolee83.github.io/quicklee/",
   "dependencies": {
     "auth0-js": "^9.8.2",
     "axios": "^0.18.0",
