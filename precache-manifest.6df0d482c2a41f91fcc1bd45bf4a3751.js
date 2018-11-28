@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/quicklee/static/css/main.d002cb57.chunk.css"
   },
   {
-    "revision": "2183ea4f054fc0487742a366f9ec1899",
+    "revision": "d71877547763d14c6a1c2505d5be9ec7",
     "url": "/quicklee/index.html"
   }
 ];
