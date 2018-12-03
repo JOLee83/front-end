@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
+import config from '../../Config';
 
 class Report extends Component {
   state = {
@@ -9,13 +9,13 @@ class Report extends Component {
     users: []
   }
   componentDidMount() {
-    axios.get("https://localhost:5001/api/reports")
+    axios.get(`${config.API_URL}/reports`)
       .then(json => {
         this.setState({
           reports: json.data
         })
       })
-    axios.get("https://localhost:5001/api/users")
+    axios.get(`${config.API_URL}/users`)
       .then(json => {
         this.setState({
           users: json.data

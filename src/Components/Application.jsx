@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom'
-import axios from 'axios'
 
 import AppHeader from './AppComponents/AppHeader.jsx'
 import AppHome from './AppComponents/AppHome.jsx'
@@ -16,25 +15,7 @@ import NewReport from './AppComponents/NewReport.jsx'
 import history from '../history';
 
 class Application extends Component {
-  state = {
-    users: [],
-  }
-  componentDidMount() {
-    axios.get("https://localhost:5001/api/users")
-      .then(json => {
-        this.setState({
-          users: json.data
-        })
-      })
-      .then(this.state.users.map((user, index) => {
-        if (index === 0) {
-          this.setState({
-            name: user.companyName
-          })
-        }
-      }))
 
-  }
   render() {
     return (
       <Router history={history}>

@@ -6,7 +6,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'jolee83.auth0.com',
     clientID: 'F5er3xmY0b652w46wkV7Hbbtbqrr54tJ',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://quicklee.surge.sh/callback',
     responseType: 'token id_token',
     scope: 'openid'
   });

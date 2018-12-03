@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
 import { Link } from 'react-router-dom'
+import config from '../../Config';
 
 
 class Inventory extends Component {
@@ -11,7 +11,7 @@ class Inventory extends Component {
     deleteId: null
   }
   componentDidMount() {
-    axios.get("https://localhost:5001/api/inventories")
+    axios.get(`${config.API_URL}/inventories`)
       .then(json => {
         this.setState({
           inventories: json.data.reverse()
@@ -26,10 +26,10 @@ class Inventory extends Component {
     }))
   }
   deleteInventory = () => {
-    axios.delete("https://localhost:5001/api/inventories/" + this.state.deleteId)
+    axios.delete(`${config.API_URL}/inventories/` + this.state.deleteId)
       .then(json => {
         this.setState({
-          inventories: this.state.inventories.reverse().filter(inventory => inventory.id !== this.state.deleteId)
+          inventories: this.state.inventories.filter(inventory => inventory.id !== this.state.deleteId)
         })
       }).then(() => { this.confirmDelete() })
   }

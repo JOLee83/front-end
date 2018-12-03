@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import config from '../../Config';
 
 class Settings extends Component {
   state = {
     users: []
   }
   componentDidMount = () => {
-    axios.get("https://localhost:5001/api/users")
+    axios.get(`${config.API_URL}/users`)
       .then(json => {
         this.setState({
           users: json.data
@@ -15,7 +16,10 @@ class Settings extends Component {
       })
   };
   updateCompanyName = (event, userId, companyName) => {
-    axios.put("https://localhost:5001/api/users/" + userId, { id: userId, companyName: companyName })
+    axios.put(`${config.API_URL}/users/` + userId, { id: userId, companyName: companyName })
+      .then(() => {
+        this.props.history.push("/app")
+      })
   }
   updateName = (e, userId) => {
     const index = this.state.users.findIndex(f => f.id === userId)
@@ -33,23 +37,23 @@ class Settings extends Component {
           <span className="active"><i className="fas fa-cog" /> Settings</span>
           <span><i className="fas fa-circle" /></span>
         </header>
-            {this.state.users.map((user, index) => {
-              if (index === 0) {
-                return (
-                  <div >
+        {this.state.users.map((user, index) => {
+          if (index === 0) {
+            return (
+              <div >
 
-                  <input 
-                    value={user.companyName}
-                    onChange={(e) => this.updateName(e, user.id)} />
-                  <h4>Company Name</h4>
-                  <button onClick={(e) => this.updateCompanyName(e, user.id, user.companyName)}>Update</button>
-                  </div>
-                  )
-              }
-            })}
-\
+                <input
+                  value={user.companyName}
+                  onChange={(e) => this.updateName(e, user.id)} />
+                <h4>Company Name</h4>
+                <button onClick={(e) => this.updateCompanyName(e, user.id, user.companyName)}>Update</button>
+              </div>
+            )
+          }
+        })}
 
-         
+
+
       </div >
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import config from '../../Config';
 
 class NewReport extends Component {
   state = {
@@ -13,7 +14,7 @@ class NewReport extends Component {
     date: new Date().toLocaleDateString()
   }
   componentDidMount() {
-    axios.get("https://localhost:5001/api/inventories")
+    axios.get(`${config.API_URL}/inventories`)
       .then(json => {
         this.setState({
           inventories: json.data.reverse()
@@ -37,12 +38,13 @@ class NewReport extends Component {
     this.setState({ date: new Date(`${e.target.value}T00:00:00`).toLocaleDateString() })
   }
   submitReport = e => {
-    axios.post("https://localhost:5001/api/reports", { inventoriesBegin: this.state.begin, inventoriesEnd: this.state.end, sales: this.state.sales, purchases: this.state.purchases, reportDate: this.state.date })
+    axios.post(`${config.API_URL}/reports`, { inventoriesBegin: this.state.begin, inventoriesEnd: this.state.end, sales: this.state.sales, purchases: this.state.purchases, reportDate: this.state.date })
       .then(() => {
         this.props.history.push("/app/reports")
       })
   }
-  confirmSubmit = () => {
+  confirmSubmit = e => {
+    e.preventDefault()
     this.setState(prevState => ({
       confirmSubmit: !prevState.confirmSubmit
     }))
@@ -55,7 +57,7 @@ class NewReport extends Component {
             <p>Submit Report?</p>
             <div>
               <button onClick={this.submitReport}>Yes</button>
-              <button onClick={() => { this.confirmSubmit() }}>No</button>
+              <button onClick={(e) => { this.confirmSubmit(e) }}>No</button>
             </div>
           </div>
         </div>
@@ -65,8 +67,7 @@ class NewReport extends Component {
             <span ><Link to="/app/reports"><i className="fas fa-file-alt" /> Reports</Link></span>
             <span className="active"><i className="fas fa-file-alt" /> Report</span>
           </header>
-
-          <form>
+          <form onSubmit={(e) => { this.confirmSubmit(e) }}>
             <div>
               <select onChange={(e) => this.updateBegin(e)}>
                 <option value={0}>Choose Beginning</option>
@@ -79,7 +80,6 @@ class NewReport extends Component {
               <h4>Beginning Inventory</h4>
             </div>
             <div>
-
               <select onChange={(e) => this.updateEnd(e)}>
                 <option value={0}>Choose Ending</option>
                 {this.state.inventories.map((inventory, index) => {
@@ -91,22 +91,19 @@ class NewReport extends Component {
               <h4>Ending Inventory</h4>
             </div>
             <div>
-
-              <input type="number" min="0" onChange={(e) => this.updatePurchases(e)} />
+              <input type="number" min="0" step=".01" onChange={(e) => this.updatePurchases(e)} />
               <h4 >Purchases($)</h4>
             </div>
             <div>
-
-              <input type="number" min="0" onChange={(e) => this.updateSales(e)} />
+              <input type="number" min="0" step=".01" onChange={(e) => this.updateSales(e)} />
               <h4>Sales($)</h4>
             </div>
             <div>
-
               <input onChange={(e) => { this.updateDate(e) }} type="date" />
               <h4>Report Date</h4>
             </div>
             <div className="button-div">
-              <button onClick={() => { this.confirmSubmit() }}>Submit Report</button>
+              <button>Submit Report</button>
             </div>
           </form>
           <table className="home-table">
@@ -114,9 +111,6 @@ class NewReport extends Component {
               <tr>
                 <th colSpan="2">Inventory Report</th>
               </tr>
-              {/* <tr>
-                <th colSpan="2">For "Company Name"</th>
-              </tr> */}
             </thead>
             <tbody>
               <tr className="odd">

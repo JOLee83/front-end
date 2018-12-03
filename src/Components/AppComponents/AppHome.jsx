@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import config from '../../Config';
 
 class AppHome extends Component {
   state = {
@@ -13,13 +14,13 @@ class AppHome extends Component {
     users: []
   }
   componentDidMount() {
-    axios.get("https://localhost:5001/api/reports")
+    axios.get(`${config.API_URL}/reports`)
       .then(json => {
         this.setState({
           reports: json.data.reverse()
         })
       })
-    axios.get("https://localhost:5001/api/users")
+    axios.get(`${config.API_URL}/users`)
       .then(json => {
         this.setState({
           users: json.data

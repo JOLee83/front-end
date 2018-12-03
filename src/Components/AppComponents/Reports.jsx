@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import config from '../../Config';
 
 class Reports extends Component {
   state = {
@@ -9,7 +10,7 @@ class Reports extends Component {
     deleteId: null
   }
   componentDidMount() {
-    axios.get("https://localhost:5001/api/reports")
+    axios.get(`${config.API_URL}/reports`)
       .then(json => {
         this.setState({
           reports: json.data.reverse()
@@ -19,7 +20,7 @@ class Reports extends Component {
       })
   }
   deleteReport = () => {
-    axios.delete("https://localhost:5001/api/reports/" + this.state.deleteId)
+    axios.delete(`${config.API_URL}/reports/` + this.state.deleteId)
       .then(json => {
         this.setState({
           reports: this.state.reports.filter(report => report.id !== this.state.deleteId)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import config from '../../Config';
 
 class Count extends Component {
   state = {
@@ -14,7 +15,7 @@ class Count extends Component {
     deleteId: null
   }
   componentDidMount() {
-    axios.get("https://localhost:5001/api/items")
+    axios.get(`${config.API_URL}/items`)
       .then(json => {
         this.setState({
           items: json.data
@@ -32,7 +33,7 @@ class Count extends Component {
     })
   }
   addItem = (e) => {
-    axios.post("https://localhost:5001/api/items", { itemName: this.state.newItemName, itemCount: 0, itemPrice: this.state.newItemPrice })
+    axios.post(`${config.API_URL}/items`, { itemName: this.state.newItemName, itemCount: 0, itemPrice: this.state.newItemPrice })
       .then(json => {
         this.setState({
           items: this.state.items.concat(json.data)
@@ -40,7 +41,7 @@ class Count extends Component {
       })
   }
   deleteItem = () => {
-    axios.delete("https://localhost:5001/api/items/" + this.state.deleteId)
+    axios.delete(`${config.API_URL}/items/` + this.state.deleteId)
       .then(() => {
         this.setState({
           items: this.state.items.filter(item => item.id !== this.state.deleteId)
@@ -50,7 +51,7 @@ class Count extends Component {
       })
   }
   updateItem = (itemId, itemName, itemPrice) => {
-    axios.put("https://localhost:5001/api/items/" + itemId, { id: itemId, itemName: itemName, itemPrice: itemPrice })
+    axios.put(`${config.API_URL}/items/` + itemId, { id: itemId, itemName: itemName, itemPrice: itemPrice })
   }
   updateName = (e, itemId) => {
     const index = this.state.items.findIndex(f => f.id === itemId)
@@ -92,7 +93,7 @@ class Count extends Component {
     this.setState({ date: e.target.value })
   }
   submitCount = () => {
-    axios.post("https://localhost:5001/api/inventories", { inventoryTotal: this.state.total, inventoryDate: this.state.date })
+    axios.post(`${config.API_URL}/inventories`, { inventoryTotal: this.state.total, inventoryDate: this.state.date })
       .then(() => {
         this.props.history.push("/app/inventory")
       })
